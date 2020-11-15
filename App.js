@@ -1,23 +1,10 @@
 import React from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import { createDrawerNavigator } from "react-navigation-drawer";
 
 import LoadingScreen from "./src/screens/LoadingScreen";
 import VerificationScreen from "./src/screens/VerificationScreen";
-import AuthStack from "./src/routes/AuthStack";
-import BottomTabs from "./src/routes/BottomTabs";
-import DrawerMenu from "./src/routes/DrawerMenu/DrawerMenu";
-
-const Drawer = createDrawerNavigator(
-  {
-    BottomTabs,
-  },
-  {
-    drawerPosition: "right",
-    drawerWidth: 250,
-    contentComponent: props => <DrawerMenu {...props} />
-  }
-);
+import AuthStack from "./src/routes/AuthStack/AuthStack";
+import Drawer from "./src/routes/DrawerMenu/DrawerStack";
 
 const AppContainer = createAppContainer(
   createSwitchNavigator(
@@ -25,7 +12,7 @@ const AppContainer = createAppContainer(
       Loading: LoadingScreen,
       App: Drawer,
       AuthStack,
-      Verify: VerificationScreen
+      Verify: VerificationScreen,
     },
     {
       initialRouteName: "Loading",

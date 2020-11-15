@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import auth from "@react-native-firebase/auth";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Toast from "react-native-simple-toast";

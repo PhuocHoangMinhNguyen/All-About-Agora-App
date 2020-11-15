@@ -1,7 +1,7 @@
 import { createStackNavigator } from "react-navigation-stack";
-import CreateReview from "../screens/CreateReview/CreateReview";
+import CreateReview from "../../screens/CreateReview/CreateReview";
 
-CreateReviewStack = createStackNavigator(
+const CreateReviewStack = createStackNavigator(
     {
         CreateReview
     },

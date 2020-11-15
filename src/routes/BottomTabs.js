@@ -1,13 +1,18 @@
 import React from "react";
+
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import JobAcceptedStack from "./JobAcceptedStack";
-import JobAvailableStack from "./JobAvailableStack";
-import CreateReviewStack from "./CreateReviewStack";
-import MoreStack from "./MoreStack";
 
-BottomTabs = createStackNavigator(
+import Ionicons from "react-native-vector-icons/Ionicons";
+import AntDesign from "react-native-vector-icons/AntDesign";
+
+import JobAcceptedStack from "./JobAcceptedStack/JobAcceptedStack";
+import JobAvailableStack from "./JobAvailableStack/JobAvailableStack";
+import CreateReviewStack from "./CreateReviewStack/CreateReviewStack";
+import MoreStack from "./DrawerMenu/MoreStack";
+import ProfileStack from "./ProfileStack/ProfileStack";
+
+const BottomTabs = createStackNavigator(
     {
         default: createBottomTabNavigator(
             {
@@ -33,12 +38,21 @@ BottomTabs = createStackNavigator(
                     screen: CreateReviewStack,
                     navigationOptions: {
                         tabBarIcon: ({ tintColor }) => (
-                            <Ionicons name="document-text-outline" size={24} color={tintColor} />
+                            <AntDesign name="edit" size={24} color={tintColor} />
                         ),
                         tabBarOnPress: ({ defaultHandler }) => defaultHandler()
                     },
                 },
                 Profile: {
+                    screen: ProfileStack,
+                    navigationOptions: {
+                        tabBarIcon: ({ tintColor }) => (
+                            <AntDesign name="profile" size={24} color={tintColor} />
+                        ),
+                        tabBarOnPress: ({ defaultHandler }) => defaultHandler()
+                    },
+                },
+                Settings: {
                     screen: MoreStack,
                     navigationOptions: {
                         tabBarIcon: ({ tintColor }) => (

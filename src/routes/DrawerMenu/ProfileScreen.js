@@ -49,11 +49,6 @@ const styles = StyleSheet.create({
     shadowRadius: 30,
     shadowOpacity: 0.4
   },
-  avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 50
-  },
   name: {
     marginTop: 10,
     fontSize: 16,
@@ -66,10 +61,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     color: "white"
   },
-  button: {
-    marginVertical: 8,
-    marginHorizontal: 16
-  }
 });
 
 export default ProfileScreen

@@ -1,7 +1,7 @@
 import { createStackNavigator } from "react-navigation-stack";
-import JobAvailable from "../screens/JobAvailable/JobAvailable";
+import JobAvailable from "../../screens/JobAvailable/JobAvailable";
 
-JobAvailableStack = createStackNavigator(
+const JobAvailableStack = createStackNavigator(
     {
         JobAvailable
     },

@@ -6,7 +6,6 @@ import auth from "@react-native-firebase/auth";
 import ProfileScreen from './ProfileScreen';
 
 // Used for the icons in each option of the drawer menu.
-import AntDesign from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Material from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -25,15 +24,6 @@ class DrawerMenu extends React.Component {
                     </TouchableOpacity>
                     <ProfileScreen />
                 </View>
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => {
-                        this.props.navigation.navigate("EditScreen")
-                        this.props.navigation.closeDrawer()
-                    }}>
-                    <AntDesign name="edit" size={20} color={"#161F3D"} />
-                    <Text>  Edit Profile</Text>
-                </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
@@ -73,12 +63,6 @@ class DrawerMenu extends React.Component {
 };
 
 const styles = StyleSheet.create({
-    name: {
-        marginTop: 24,
-        fontSize: 16,
-        fontWeight: "600",
-        marginBottom: 24
-    },
     button: {
         marginVertical: 10,
         paddingHorizontal: 10,
