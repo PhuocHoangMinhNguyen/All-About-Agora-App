@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "243868296300",
+    "firebase_url": "https://all-about-agora.firebaseio.com",
+    "project_id": "all-about-agora",
+    "storage_bucket": "all-about-agora.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243868296300:android:29d9cb2ab95c9fe167e449",
+        "android_client_info": {
+          "package_name": "com.allaboutagora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243868296300-tqcde44khtb0pb5gebsf0fbbem35qiv7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD-WQs1tlJYISC-ykanHsK6ijcoOuvOug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243868296300-tqcde44khtb0pb5gebsf0fbbem35qiv7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
