@@ -11,7 +11,7 @@ class EditScreen extends React.Component {
             address: "Add your location"
         }
     }
-    a
+
     componentDidMount = async () => {
         const user = this.props.uid || (auth().currentUser || {}).uid
 
