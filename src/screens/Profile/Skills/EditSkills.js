@@ -4,7 +4,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 class EditSkills extends React.Component {
     state = {
-        skills: ['aa'],
+        skills: [],
         addingSkill: ''
     }
 
@@ -32,6 +32,15 @@ class EditSkills extends React.Component {
         this.setState({ skills: tempArray })
     }
 
+    saveSummary = () => {
+        const { skills } = this.state
+        if (skills.length == 0) {
+            console.log("Empty");
+        } else {
+            console.log(skills);
+        }
+    }
+
     renderItem = (item) => {
         return (
             <View style={styles.item}>
@@ -51,7 +60,7 @@ class EditSkills extends React.Component {
                         <Ionicons name="close" size={32} />
                     </TouchableOpacity>
                     <Text style={styles.header}>Skills</Text>
-                    <TouchableOpacity onPress={this.saveSummary}>
+                    <TouchableOpacity onPress={this.saveSkills}>
                         <Ionicons name="save-sharp" size={32} />
                     </TouchableOpacity>
                 </View>
