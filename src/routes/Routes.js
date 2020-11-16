@@ -9,11 +9,16 @@ import { createDrawerNavigator } from "react-navigation-drawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-import Summary from "../screens/Profile/Summary/Summary";
-import Education from "../screens/Profile/Education/Education";
-import Experience from "../screens/Profile/Experience/Experience";
-import Skills from "../screens/Profile/Skills/Skills";
-import EditProfile from "../screens/Profile/EditProfile";
+// import Summary from './EditStack/SummaryStack';
+// import Education from './EditStack/EducationStack';
+// import Experience from './EditStack/ExperienceStack';
+// import Skills from './EditStack/SkillsStack';
+
+import Summary from '../screens/Profile/Summary/Summary';
+import Education from '../screens/Profile/Education/Education';
+import Experience from '../screens/Profile/Experience/Experience';
+import Skills from '../screens/Profile/Skills/Skills';
+
 import DrawerMenu from "./DrawerMenu/DrawerMenu";
 import JobAcceptedStack from "./JobAcceptedStack/JobAcceptedStack";
 import JobAvailableStack from "./JobAvailableStack/JobAvailableStack";
@@ -30,8 +35,8 @@ const EditScreen = createMaterialTopTabNavigator(
     {
         tabBarOptions: {
             style: {
-                backgroundColor: '#001F4C'
-            }
+                backgroundColor: '#001F4C',
+            },
         },
     }
 );
@@ -39,7 +44,6 @@ const EditScreen = createMaterialTopTabNavigator(
 const EditStack = createStackNavigator(
     {
         EditScreen,
-        EditProfile
     },
     {
         mode: "modal",

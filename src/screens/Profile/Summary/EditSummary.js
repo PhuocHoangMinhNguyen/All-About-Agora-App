@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-class EditProfile extends React.Component {
+class EditSummary extends React.Component {
     render() {
         return (
-            <Text>Edit Profile</Text>
+            <Text>Edit Summary</Text>
         )
     }
 }
 
-export default EditProfile
+export default EditSummary
