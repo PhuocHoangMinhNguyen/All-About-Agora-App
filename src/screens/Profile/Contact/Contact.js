@@ -1,17 +1,78 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
 
 class Contact extends React.Component {
+    state = {
+        contact: null
+    }
+    componentDidMount() {
+        let temp = null
+        firestore().collection("contact").where("email", "==", auth().currentUser.email).get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((documentSnapshot) => {
+                    temp = documentSnapshot.data();
+                })
+            }).then(() => {
+                this.setState({ contact: temp })
+            })
+    }
+
     render() {
-        return (
-            <View style={styles.container}>
-                <Text style={styles.header}>Contact</Text>
-                <Text style={styles.body}>Add your contact details so employers can contact you.</Text>
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("EditContact")}>
-                    <Text style={{ color: 'white' }}>Add Contact Details</Text>
-                </TouchableOpacity>
-            </View>
-        )
+        const { contact } = this.state
+        if (contact == null) {
+            return (
+                <View style={styles.container}>
+                    <Text style={styles.header}>Contact</Text>
+                    <Text style={styles.body}>Add your contact details so employers can contact you.</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("EditContact")}>
+                        <Text style={{ color: 'white' }}>Add Contact Details</Text>
+                    </TouchableOpacity>
+                </View>
+            )
+        } else {
+            return (
+                <View style={styles.container}>
+                    <Text style={styles.header}>Contact</Text>
+                    <View style={styles.line}>
+                        <View style={styles.columnLeft}>
+                            <Text>Full name: </Text>
+                        </View>
+                        <View style={styles.columnRight}>
+                            <Text>{contact.firstName + ' ' + contact.lastName}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.line}>
+                        <View style={styles.columnLeft}>
+                            <Text>Email: </Text>
+                        </View>
+                        <View style={styles.columnRight}>
+                            <Text>{contact.email}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.line}>
+                        <View style={styles.columnLeft}>
+                            <Text>Phone number: </Text>
+                        </View>
+                        <View style={styles.columnRight}>
+                            <Text>{(contact.phoneNumber == '') ? 'N/A' : contact.phoneNumber}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.line}>
+                        <View style={styles.columnLeft}>
+                            <Text>Address: </Text>
+                        </View>
+                        <View style={styles.columnRight}>
+                            <Text>{contact.homeLocation}</Text>
+                        </View>
+                    </View>
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("EditContact")}>
+                        <Text style={{ color: 'white' }}>Add Contact Details</Text>
+                    </TouchableOpacity>
+                </View>
+            )
+        }
     }
 }
 
@@ -36,6 +97,16 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         marginVertical: 12,
         marginEnd: 16
+    },
+    line: {
+        flexDirection: "row",
+        marginVertical: 10,
+    },
+    columnLeft: {
+        flex: 1
+    },
+    columnRight: {
+        flex: 2
     }
 });
 
