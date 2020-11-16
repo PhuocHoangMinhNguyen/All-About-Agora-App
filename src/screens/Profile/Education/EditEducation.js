@@ -15,6 +15,7 @@ class EditEducation extends React.Component {
         show: false,
         date: Date.now()
     }
+
     onChange = (event, selectedDate) => {
         const currentDate = selectedDate || this.state.date
         this.setState({
@@ -24,6 +25,10 @@ class EditEducation extends React.Component {
         });
     };
 
+    saveEducation = () => {
+
+    }
+
     render() {
         const { course, institution, highlights, complete, finish, show, date } = this.state
         return (
@@ -32,8 +37,8 @@ class EditEducation extends React.Component {
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                         <Ionicons name="close" size={32} />
                     </TouchableOpacity>
-                    <Text style={styles.header}>Education</Text>
-                    <TouchableOpacity onPress={this.saveSummary}>
+                    <Text style={styles.header}>Add qualification</Text>
+                    <TouchableOpacity onPress={this.saveEducation}>
                         <Ionicons name="save-sharp" size={32} />
                     </TouchableOpacity>
                 </View>

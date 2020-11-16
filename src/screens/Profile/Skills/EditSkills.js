@@ -32,7 +32,7 @@ class EditSkills extends React.Component {
         this.setState({ skills: tempArray })
     }
 
-    saveSummary = () => {
+    saveSkills = () => {
         const { skills } = this.state
         if (skills.length == 0) {
             console.log("Empty");
