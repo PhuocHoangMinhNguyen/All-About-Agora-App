@@ -23,7 +23,8 @@ EducationStack.navigationOptions = {
 
 const styles = StyleSheet.create({
     education: {
-        color: '#FFF'
+        color: '#FFF',
+        fontSize: 13
     }
 });
 

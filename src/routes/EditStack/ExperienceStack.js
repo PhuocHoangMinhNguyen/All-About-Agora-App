@@ -23,7 +23,8 @@ ExperienceStack.navigationOptions = {
 
 const styles = StyleSheet.create({
     experience: {
-        color: '#FFF'
+        color: '#FFF',
+        fontSize: 13
     }
 });
 

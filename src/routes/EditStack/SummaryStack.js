@@ -23,7 +23,8 @@ SummaryStack.navigationOptions = {
 
 const styles = StyleSheet.create({
     summary: {
-        color: '#FFF'
+        color: '#FFF',
+        fontSize: 13
     }
 });
 
