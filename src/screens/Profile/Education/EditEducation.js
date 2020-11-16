@@ -1,15 +1,31 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
+import CheckBox from "@react-native-community/checkbox";
+import DatePicker from "@react-native-community/datetimepicker";
+import moment from 'moment';
 
 class EditEducation extends React.Component {
     state = {
         course: '',
         institution: '',
-        highlights: ''
+        highlights: '',
+        complete: true,
+        finish: 'Finished',
+        show: false,
+        date: Date.now()
     }
+    onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || this.state.date
+        this.setState({
+            show: !this.state.show,
+            date: currentDate,
+            finish: moment(selectedDate).format('MMMM Do YYYY'),
+        });
+    };
+
     render() {
-        const { course, institution, highlights } = this.state
+        const { course, institution, highlights, complete, finish, show, date } = this.state
         return (
             <View style={styles.container}>
                 <View style={styles.icons}>
@@ -33,6 +49,35 @@ class EditEducation extends React.Component {
                         onChangeText={institution => this.setState({ institution: institution })}
                         value={institution} />
                 </View>
+                <View style={{ padding: 20, flexDirection: "row" }}>
+                    <Text style={{ flex: 1, alignSelf: "center" }}>Qualification complete</Text>
+                    <CheckBox value={complete}
+                        onValueChange={newValue => {
+                            complete
+                                ? this.setState({
+                                    complete: newValue,
+                                    date: Date.now(),
+                                    finish: 'Expected finish'
+                                })
+                                : this.setState({
+                                    complete: newValue,
+                                    date: Date.now(),
+                                    finish: 'Finished'
+                                })
+                        }} />
+                </View>
+                <TouchableOpacity style={{ padding: 20 }} onPress={() => this.setState({ show: !show })}>
+                    <View style={[styles.input, { flexDirection: "row" }]}>
+                        <Text style={{ flex: 1, alignSelf: "center", color: "grey" }}>{finish}</Text>
+                        <Ionicons name="calendar" size={30} />
+                    </View>
+
+                    {show && (
+                        <DatePicker value={date}
+                            mode="date"
+                            onChange={this.onChange} />
+                    )}
+                </TouchableOpacity>
                 <View style={{ padding: 20 }}>
                     <TextInput style={styles.input}
                         placeholder="Course highlights (optional)"
@@ -64,8 +109,13 @@ const styles = StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth,
         height: 40,
         fontSize: 15,
-        color: "#161F3D",
     },
+    date: {
+        borderBottomColor: "#8A8F9E",
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        height: 40,
+        fontSize: 15,
+    }
 });
 
 export default EditEducation
