@@ -1,14 +1,14 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 
-class Summary extends React.Component {
+class Contact extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.header}>Summary</Text>
-                <Text style={styles.body}>Add a personal summary to your profile as a way to introduce who you are.</Text>
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("EditSummary")}>
-                    <Text style={{ color: 'white' }}>Add summary</Text>
+                <Text style={styles.header}>Contact</Text>
+                <Text style={styles.body}>Add your contact details so employers can contact you.</Text>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("EditContact")}>
+                    <Text style={{ color: 'white' }}>Add Contact Details</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Summary
+export default Contact

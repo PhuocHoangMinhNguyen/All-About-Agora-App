@@ -19,12 +19,30 @@ class EditExperience extends React.Component {
         endDateText: 'End date',
     }
 
+    onStartChange = (event, selectedDate) => {
+        const currentDate = selectedDate || this.state.startDate
+        this.setState({
+            showStartDate: !this.state.showStartDate,
+            startDate: currentDate,
+            startDateText: moment(currentDate).format('MMM Do YYYY'),
+        });
+    }
+
+    onEndChange = (event, selectedDate) => {
+        const currentDate = selectedDate || this.state.endDate
+        this.setState({
+            showEndDate: !this.state.showEndDate,
+            endDate: currentDate,
+            endDateText: moment(currentDate).format('MMM Do YYYY'),
+        });
+    }
+
     saveExperience = () => {
 
     }
 
     render() {
-        const { job, company, description } = this.state
+        const { job, company, description, inRole, startDateText, endDateText, showStartDate, showEndDate, startDate, endDate } = this.state
         return (
             <View style={styles.container}>
                 <View style={styles.icons}>
@@ -36,22 +54,55 @@ class EditExperience extends React.Component {
                         <Ionicons name="save-sharp" size={32} />
                     </TouchableOpacity>
                 </View>
-                <View style={{ padding: 20 }}>
+                <View style={styles.layout}>
                     <TextInput style={styles.input}
                         placeholder="Job title"
                         onChangeText={job => this.setState({ job: job })}
                         value={job} />
                 </View>
-                <View style={{ padding: 20 }}>
+                <View style={styles.layout}>
                     <TextInput style={styles.input}
                         placeholder="Company name"
                         onChangeText={company => this.setState({ company: company })}
                         value={company} />
                 </View>
-                <View style={{ padding: 20, flexDirection: "row" }}>
+                <View style={[styles.layout, { flexDirection: "row" }]}>
                     <Text style={{ flex: 1, alignSelf: "center" }}>I'm still in this role</Text>
+                    <CheckBox value={inRole}
+                        onValueChange={newValue => {
+                            this.setState({
+                                inRole: newValue,
+                                startDate: Date.now(),
+                                endDate: Date.now(),
+                                startDateText: 'Start date',
+                                endDateText: 'End date'
+                            })
+                        }} />
                 </View>
-                <View style={{ padding: 20 }}>
+                <View style={styles.role}>
+                    <TouchableOpacity style={styles.role1} onPress={() => this.setState({ showStartDate: !showStartDate })}>
+                        <Text style={styles.roleText}>{startDateText}</Text>
+                        <Ionicons name="calendar" size={30} />
+                    </TouchableOpacity>
+                    {(inRole == false) && (
+                        <TouchableOpacity style={styles.role2} onPress={() => this.setState({ showEndDate: !showEndDate })}>
+                            <Text style={styles.roleText}>{endDateText}</Text>
+                            <Ionicons name="calendar" size={30} />
+                        </TouchableOpacity>
+                    )}
+
+                    {showStartDate && (
+                        <DatePicker value={startDate}
+                            mode="date"
+                            onChange={this.onStartChange} />
+                    )}
+                    {showEndDate && (
+                        <DatePicker value={endDate}
+                            mode="date"
+                            onChange={this.onEndChange} />
+                    )}
+                </View>
+                <View style={styles.layout}>
                     <TextInput style={styles.input}
                         placeholder="Description (recommended)"
                         onChangeText={description => this.setState({ description: description })}
@@ -66,6 +117,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#FFF"
+    },
+    layout: {
+        marginHorizontal: 20,
+        marginVertical: 10
     },
     icons: {
         padding: 20,
@@ -82,6 +137,29 @@ const styles = StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth,
         height: 40,
         fontSize: 15,
+    },
+    role: {
+        flexDirection: "row",
+        marginHorizontal: 20,
+        marginVertical: 10,
+    },
+    role1: {
+        flexDirection: "row",
+        flex: 1,
+        borderBottomColor: "#8A8F9E",
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        justifyContent: "space-evenly"
+    },
+    role2: {
+        flexDirection: "row",
+        flex: 1,
+        borderBottomColor: "#8A8F9E",
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        justifyContent: "space-evenly"
+    },
+    roleText: {
+        alignSelf: "center",
+        color: "grey"
     },
 });
 

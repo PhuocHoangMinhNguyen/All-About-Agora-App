@@ -21,7 +21,7 @@ class EditEducation extends React.Component {
         this.setState({
             show: !this.state.show,
             date: currentDate,
-            finish: moment(selectedDate).format('MMMM Do YYYY'),
+            finish: moment(currentDate).format('MMM Do YYYY'),
         });
     };
 
@@ -42,19 +42,19 @@ class EditEducation extends React.Component {
                         <Ionicons name="save-sharp" size={32} />
                     </TouchableOpacity>
                 </View>
-                <View style={{ padding: 20 }}>
+                <View style={styles.layout}>
                     <TextInput style={styles.input}
                         placeholder="Course or qualification"
                         onChangeText={course => this.setState({ course: course })}
                         value={course} />
                 </View>
-                <View style={{ padding: 20 }}>
+                <View style={styles.layout}>
                     <TextInput style={styles.input}
                         placeholder="Instituition"
                         onChangeText={institution => this.setState({ institution: institution })}
                         value={institution} />
                 </View>
-                <View style={{ padding: 20, flexDirection: "row" }}>
+                <View style={[styles.layout, { flexDirection: "row" }]}>
                     <Text style={{ flex: 1, alignSelf: "center" }}>Qualification complete</Text>
                     <CheckBox value={complete}
                         onValueChange={newValue => {
@@ -71,19 +71,18 @@ class EditEducation extends React.Component {
                                 })
                         }} />
                 </View>
-                <TouchableOpacity style={{ padding: 20 }} onPress={() => this.setState({ show: !show })}>
+                <TouchableOpacity style={styles.layout} onPress={() => this.setState({ show: !show })}>
                     <View style={[styles.input, { flexDirection: "row" }]}>
                         <Text style={{ flex: 1, alignSelf: "center", color: "grey" }}>{finish}</Text>
                         <Ionicons name="calendar" size={30} />
                     </View>
-
-                    {show && (
-                        <DatePicker value={date}
-                            mode="date"
-                            onChange={this.onChange} />
-                    )}
                 </TouchableOpacity>
-                <View style={{ padding: 20 }}>
+                {show && (
+                    <DatePicker value={date}
+                        mode="date"
+                        onChange={this.onChange} />
+                )}
+                <View style={styles.layout}>
                     <TextInput style={styles.input}
                         placeholder="Course highlights (optional)"
                         onChangeText={highlights => this.setState({ highlights: highlights })}
@@ -98,6 +97,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#FFF"
+    },
+    layout: {
+        marginHorizontal: 20,
+        marginVertical: 10
     },
     icons: {
         padding: 20,

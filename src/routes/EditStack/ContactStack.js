@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native'
 import { createStackNavigator } from 'react-navigation-stack';
-import Summary from "../../screens/Profile/Summary/Summary";
-import EditSummary from "../../screens/Profile/Summary/EditSummary";
+import Contact from "../../screens/Profile/Contact/Contact";
+import EditContact from "../../screens/Profile/Contact/EditContact";
 
-const SummaryStack = createStackNavigator(
+const ContactStack = createStackNavigator(
     {
-        Summary,
-        EditSummary
+        Contact,
+        EditContact
     },
     {
         mode: "modal",
@@ -15,17 +15,17 @@ const SummaryStack = createStackNavigator(
     }
 );
 
-SummaryStack.navigationOptions = {
+ContactStack.navigationOptions = {
     tabBarLabel: ({ }) => (
-        <Text style={styles.summary}>Summary</Text>
+        <Text style={styles.contact}>Contact</Text>
     )
 }
 
 const styles = StyleSheet.create({
-    summary: {
+    contact: {
         color: '#FFF',
         fontSize: 13
     }
 });
 
-export default SummaryStack
+export default ContactStack
