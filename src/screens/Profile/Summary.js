@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
 export default class Summary extends React.Component {
     render() {
@@ -11,6 +11,12 @@ export default class Summary extends React.Component {
 
 Summary.navigationOptions = {
     tabBarLabel: ({ }) => (
-        <Text>Summary</Text>
+        <Text style={styles.summary}>Summary</Text>
     )
 }
+
+const styles = StyleSheet.create({
+    summary: {
+        color: '#FFF'
+    }
+});

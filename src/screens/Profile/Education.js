@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
 export default class Education extends React.Component {
     render() {
@@ -11,6 +11,12 @@ export default class Education extends React.Component {
 
 Education.navigationOptions = {
     tabBarLabel: ({ }) => (
-        <Text>Education</Text>
+        <Text style={styles.education}>Education</Text>
     )
 }
+
+const styles = StyleSheet.create({
+    education: {
+        color: '#FFF'
+    }
+});

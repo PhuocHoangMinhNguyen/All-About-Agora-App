@@ -25,11 +25,8 @@ const EditScreen = createMaterialTopTabNavigator(
     },
     {
         tabBarOptions: {
-            //activeTintColor: 'white',
-            showLabel: true,
-            showIcon: false,
             style: {
-                //backgroundColor: 'blue'
+                backgroundColor: '#001F4C'
             }
         },
     }
