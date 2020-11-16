@@ -9,26 +9,17 @@ const EditScreen = createStackNavigator(
     {
         default: createMaterialTopTabNavigator(
             {
-                Summary: {
-                    screen: Summary,
-                    navigationOptions: {
-                        tabBarLabel: ({ }) => (
-                            <Text>Summary</Text>
-                        ),
-                    },
-                },
-                Education: {
-                    screen: Education,
-                    navigationOptions: {
-                        tabBarLabel: ({ }) => (
-                            <Text>Education</Text>
-                        ),
-                    },
-                },
+                Summary,
+                Education,
             },
             {
                 tabBarOptions: {
-                    scrollEnabled: false,
+                    //activeTintColor: 'white',
+                    showLabel: true,
+                    showIcon: false,
+                    style: {
+                        //backgroundColor: 'blue'
+                    }
                 },
             }
         ),

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-class Education extends React.Component {
+export default class Education extends React.Component {
     render() {
         return (
             <Text>Education</Text>
@@ -9,4 +9,8 @@ class Education extends React.Component {
     }
 }
 
-export default Education
+Education.navigationOptions = {
+    tabBarLabel: ({ }) => (
+        <Text>Education</Text>
+    )
+}
