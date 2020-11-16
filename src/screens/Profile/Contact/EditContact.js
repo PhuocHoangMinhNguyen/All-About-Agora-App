@@ -7,14 +7,28 @@ import Toast from "react-native-simple-toast";
 
 class EditContact extends React.Component {
     state = {
-        firstName: '',
-        lastName: '',
-        phoneNumber: '',
-        homeLocation: '',
+        contact: {
+            firstName: '',
+            lastName: '',
+            phoneNumber: '',
+            homeLocation: '',
+        }
+    }
+
+    componentDidMount() {
+        let temp = null
+        firestore().collection("contact").where("email", "==", auth().currentUser.email).get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((documentSnapshot) => {
+                    temp = documentSnapshot.data();
+                })
+            }).then(() => {
+                this.setState({ contact: temp })
+            })
     }
 
     saveSummary = () => {
-        const { firstName, lastName, phoneNumber, homeLocation } = this.state
+        const { firstName, lastName, phoneNumber, homeLocation } = this.state.contact
         if (firstName == '') {
             Toast.show("Please enter first name");
         } else if (lastName == '') {
@@ -36,7 +50,7 @@ class EditContact extends React.Component {
     }
 
     render() {
-        const { firstName, lastName, phoneNumber, homeLocation } = this.state
+        const { firstName, lastName, phoneNumber, homeLocation } = this.state.contact
         return (
             <View style={styles.container}>
                 <View style={styles.icons}>
@@ -50,25 +64,25 @@ class EditContact extends React.Component {
                 </View>
                 <View style={styles.layout}>
                     <TextInput style={styles.input}
-                        placeholder="First name"
+                        placeholder={(firstName == '') ? "First name" : firstName}
                         onChangeText={firstName => this.setState({ firstName: firstName })}
                         value={firstName} />
                 </View>
                 <View style={styles.layout}>
                     <TextInput style={styles.input}
-                        placeholder="Last name"
+                        placeholder={(lastName == '') ? "Last name" : lastName}
                         onChangeText={lastName => this.setState({ lastName: lastName })}
                         value={lastName} />
                 </View>
                 <View style={styles.layout}>
                     <TextInput style={styles.input}
-                        placeholder="Phone number"
+                        placeholder={(phoneNumber == '') ? "Phone number" : phoneNumber}
                         onChangeText={phoneNumber => this.setState({ phoneNumber: phoneNumber })}
                         value={phoneNumber} />
                 </View>
                 <View style={styles.layout}>
                     <TextInput style={styles.input}
-                        placeholder="Home location"
+                        placeholder={(homeLocation == '') ? "Home location" : homeLocation}
                         onChangeText={homeLocation => this.setState({ homeLocation: homeLocation })}
                         value={homeLocation} />
                 </View>
