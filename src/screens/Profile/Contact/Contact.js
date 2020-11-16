@@ -9,14 +9,11 @@ class Contact extends React.Component {
     }
     componentDidMount() {
         let temp = null
-        firestore().collection("contact").where("email", "==", auth().currentUser.email).get()
-            .then((querySnapshot) => {
-                querySnapshot.forEach((documentSnapshot) => {
-                    temp = documentSnapshot.data();
-                })
-            }).then(() => {
-                this.setState({ contact: temp })
-            })
+        firestore().collection("contact").doc((auth().currentUser || {}).uid)
+            .onSnapshot((documentSnapshot) => {
+                temp = documentSnapshot.data();
+                this.setState({ contact: temp });
+            });
     }
 
     render() {

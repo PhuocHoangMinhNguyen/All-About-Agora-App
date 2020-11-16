@@ -15,19 +15,14 @@ class EditContact extends React.Component {
         }
     }
 
-    componentDidMount() {
-        let temp = null
-        firestore().collection("contact").where("email", "==", auth().currentUser.email).get()
-            .then((querySnapshot) => {
-                querySnapshot.forEach((documentSnapshot) => {
-                    temp = documentSnapshot.data();
-                })
-            }).then(() => {
-                this.setState({ contact: temp })
-            })
+    componentDidMount = async () => {
+        const firebaseContact = await firestore().collection("contact").doc((auth().currentUser || {}).uid).get();
+        if (firebaseContact.exists) {
+            this.setState({ contact: firebaseContact.data() });
+        }
     }
 
-    saveSummary = () => {
+    saveContact = () => {
         const { firstName, lastName, phoneNumber, homeLocation } = this.state.contact
         if (firstName == '') {
             Toast.show("Please enter first name");
@@ -36,13 +31,18 @@ class EditContact extends React.Component {
         } else if (homeLocation == '') {
             Toast.show("Please enter home location");
         } else {
-            firestore().collection('contact').add({
-                email: auth().currentUser.email,
-                firstName: firstName,
-                lastName: lastName,
-                phoneNumber: phoneNumber,
-                homeLocation: homeLocation
-            }).then(() => {
+            firestore().collection('contact').doc((auth().currentUser || {}).uid).set(
+                {
+                    email: auth().currentUser.email,
+                    firstName: firstName,
+                    lastName: lastName,
+                    phoneNumber: phoneNumber,
+                    homeLocation: homeLocation
+                },
+                {
+                    merge: true
+                }
+            ).then(() => {
                 this.props.navigation.goBack();
                 Toast.show("Contact details stored");
             })
@@ -58,32 +58,33 @@ class EditContact extends React.Component {
                         <Ionicons name="close" size={32} />
                     </TouchableOpacity>
                     <Text style={styles.header}>Add Contact</Text>
-                    <TouchableOpacity onPress={this.saveSummary}>
+                    <TouchableOpacity onPress={this.saveContact}>
                         <Ionicons name="save-sharp" size={32} />
                     </TouchableOpacity>
                 </View>
                 <View style={styles.layout}>
                     <TextInput style={styles.input}
-                        placeholder={(firstName == '') ? "First name" : firstName}
-                        onChangeText={firstName => this.setState({ firstName: firstName })}
+                        placeholder="First name"
+                        onChangeText={firstName => this.setState({ contact: { ...this.state.contact, firstName } })}
                         value={firstName} />
                 </View>
                 <View style={styles.layout}>
                     <TextInput style={styles.input}
-                        placeholder={(lastName == '') ? "Last name" : lastName}
-                        onChangeText={lastName => this.setState({ lastName: lastName })}
+                        placeholder="Last name"
+                        onChangeText={lastName => this.setState({ contact: { ...this.state.contact, lastName } })}
                         value={lastName} />
                 </View>
                 <View style={styles.layout}>
                     <TextInput style={styles.input}
-                        placeholder={(phoneNumber == '') ? "Phone number" : phoneNumber}
-                        onChangeText={phoneNumber => this.setState({ phoneNumber: phoneNumber })}
+                        placeholder="Phone number"
+                        keyboardType="numeric"
+                        onChangeText={phoneNumber => this.setState({ contact: { ...this.state.contact, phoneNumber } })}
                         value={phoneNumber} />
                 </View>
                 <View style={styles.layout}>
                     <TextInput style={styles.input}
-                        placeholder={(homeLocation == '') ? "Home location" : homeLocation}
-                        onChangeText={homeLocation => this.setState({ homeLocation: homeLocation })}
+                        placeholder="Home location"
+                        onChangeText={homeLocation => this.setState({ contact: { ...this.state.contact, homeLocation } })}
                         value={homeLocation} />
                 </View>
             </View>

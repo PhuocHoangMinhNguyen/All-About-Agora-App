@@ -1,11 +1,17 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, FlatList } from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
 
 class EditSkills extends React.Component {
     state = {
         skills: [],
         addingSkill: ''
+    }
+
+    componentDidMount() {
+
     }
 
     addSkill = () => {
@@ -33,12 +39,7 @@ class EditSkills extends React.Component {
     }
 
     saveSkills = () => {
-        const { skills } = this.state
-        if (skills.length == 0) {
-            console.log("Empty");
-        } else {
-            console.log(skills);
-        }
+
     }
 
     renderItem = (item) => {

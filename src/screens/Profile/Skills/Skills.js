@@ -1,7 +1,13 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
 
 class Skills extends React.Component {
+    componentDidMount() {
+
+    }
+
     render() {
         return (
             <View style={styles.container}>
