@@ -59,7 +59,7 @@ class EditSkills extends React.Component {
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                         <Ionicons name="close" size={32} />
                     </TouchableOpacity>
-                    <Text style={styles.header}>Skills</Text>
+                    <Text style={styles.header}>Add Skills</Text>
                     <TouchableOpacity onPress={this.saveSkills}>
                         <Ionicons name="save-sharp" size={32} />
                     </TouchableOpacity>

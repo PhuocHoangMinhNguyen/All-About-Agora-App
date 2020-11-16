@@ -23,7 +23,7 @@ class EditSummary extends React.Component {
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                         <Ionicons name="close" size={32} />
                     </TouchableOpacity>
-                    <Text style={styles.header}>Summary</Text>
+                    <Text style={styles.header}>Add Summary</Text>
                     <TouchableOpacity onPress={this.saveSummary}>
                         <Ionicons name="save-sharp" size={32} />
                     </TouchableOpacity>
