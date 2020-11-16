@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
+import Toast from "react-native-simple-toast";
 
 class EditContact extends React.Component {
     state = {
@@ -11,7 +14,25 @@ class EditContact extends React.Component {
     }
 
     saveSummary = () => {
-
+        const { firstName, lastName, phoneNumber, homeLocation } = this.state
+        if (firstName == '') {
+            Toast.show("Please enter first name");
+        } else if (lastName == '') {
+            Toast.show("Please enter last name");
+        } else if (homeLocation == '') {
+            Toast.show("Please enter home location");
+        } else {
+            firestore().collection('contact').add({
+                email: auth().currentUser.email,
+                firstName: firstName,
+                lastName: lastName,
+                phoneNumber: phoneNumber,
+                homeLocation: homeLocation
+            }).then(() => {
+                this.props.navigation.goBack();
+                Toast.show("Contact details stored");
+            })
+        }
     }
 
     render() {
@@ -32,6 +53,24 @@ class EditContact extends React.Component {
                         placeholder="First name"
                         onChangeText={firstName => this.setState({ firstName: firstName })}
                         value={firstName} />
+                </View>
+                <View style={styles.layout}>
+                    <TextInput style={styles.input}
+                        placeholder="Last name"
+                        onChangeText={lastName => this.setState({ lastName: lastName })}
+                        value={lastName} />
+                </View>
+                <View style={styles.layout}>
+                    <TextInput style={styles.input}
+                        placeholder="Phone number"
+                        onChangeText={phoneNumber => this.setState({ phoneNumber: phoneNumber })}
+                        value={phoneNumber} />
+                </View>
+                <View style={styles.layout}>
+                    <TextInput style={styles.input}
+                        placeholder="Home location"
+                        onChangeText={homeLocation => this.setState({ homeLocation: homeLocation })}
+                        value={homeLocation} />
                 </View>
             </View>
         )
