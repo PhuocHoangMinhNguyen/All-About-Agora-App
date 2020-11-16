@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default class Summary extends React.Component {
+class Summary extends React.Component {
     render() {
         return (
             <View style={styles.container}>
@@ -15,14 +15,10 @@ export default class Summary extends React.Component {
     }
 }
 
-Summary.navigationOptions = {
-    tabBarLabel: ({ }) => (
-        <Text style={styles.summary}>Summary</Text>
-    )
-}
-
 const styles = StyleSheet.create({
-    summary: {
-        color: '#FFF'
+    container: {
+
     }
 });
+
+export default Summary

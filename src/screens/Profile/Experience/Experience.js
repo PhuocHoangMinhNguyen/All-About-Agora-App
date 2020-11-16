@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 
-export default class Experience extends React.Component {
+class Experience extends React.Component {
     render() {
         return (
             <Text>Experience</Text>
@@ -9,14 +9,4 @@ export default class Experience extends React.Component {
     }
 }
 
-Experience.navigationOptions = {
-    tabBarLabel: ({ }) => (
-        <Text style={styles.experience}>Experience</Text>
-    )
-}
-
-const styles = StyleSheet.create({
-    experience: {
-        color: '#FFF'
-    }
-});
+export default Experience

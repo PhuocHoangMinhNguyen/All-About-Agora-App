@@ -9,15 +9,15 @@ import { createDrawerNavigator } from "react-navigation-drawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-// import Summary from './EditStack/SummaryStack';
-// import Education from './EditStack/EducationStack';
-// import Experience from './EditStack/ExperienceStack';
-// import Skills from './EditStack/SkillsStack';
+import Summary from './EditStack/SummaryStack';
+import Education from './EditStack/EducationStack';
+import Experience from './EditStack/ExperienceStack';
+import Skills from './EditStack/SkillsStack';
 
-import Summary from '../screens/Profile/Summary/Summary';
-import Education from '../screens/Profile/Education/Education';
-import Experience from '../screens/Profile/Experience/Experience';
-import Skills from '../screens/Profile/Skills/Skills';
+// import Summary from '../screens/Profile/Summary/Summary';
+// import Education from '../screens/Profile/Education/Education';
+// import Experience from '../screens/Profile/Experience/Experience';
+// import Skills from '../screens/Profile/Skills/Skills';
 
 import DrawerMenu from "./DrawerMenu/DrawerMenu";
 import JobAcceptedStack from "./JobAcceptedStack/JobAcceptedStack";

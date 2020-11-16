@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 
-export default class Skills extends React.Component {
+class Skills extends React.Component {
     render() {
         return (
             <Text>Skills</Text>
@@ -9,14 +9,4 @@ export default class Skills extends React.Component {
     }
 }
 
-Skills.navigationOptions = {
-    tabBarLabel: ({ }) => (
-        <Text style={styles.skills}>Skills</Text>
-    )
-}
-
-const styles = StyleSheet.create({
-    skills: {
-        color: '#FFF'
-    }
-});
+export default Skills
