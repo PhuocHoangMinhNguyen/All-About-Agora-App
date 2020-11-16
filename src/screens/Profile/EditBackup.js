@@ -2,8 +2,8 @@ import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import auth from "@react-native-firebase/auth";
 import firestore from "@react-native-firebase/firestore";
-import Education from './Education';
-import Summary from './Summary';
+import Education from './Education/Education';
+import Summary from './Summary/Summary';
 import Background from "../../components/Background";
 
 class EditScreen extends React.Component {
