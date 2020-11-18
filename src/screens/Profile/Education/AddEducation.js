@@ -19,10 +19,6 @@ class AddEducation extends React.Component {
         date: Date.now()
     }
 
-    componentDidMount = async () => {
-
-    }
-
     onChange = (event, selectedDate) => {
         const currentDate = selectedDate || this.state.date
         this.setState({
@@ -37,17 +33,19 @@ class AddEducation extends React.Component {
         if (course.trim() == '') {
             Toast.show("Please enter course details");
         } else if (institution == '') {
-            Toast.show("Please enter institutionn name");
+            Toast.show("Please enter institution name");
         } else {
-            firestore().collection("education").doc((auth().currentUser || {}).uid).set(
-                {
-                    course: course,
-                    institution: institution,
-                    highlights: highlights,
-                    complete: complete,
-                    date: date
-                }, { merge: true }
-            );
+            firestore().collection("education").add({
+                userId: (auth().currentUser || {}).uid,
+                course: course,
+                institution: institution,
+                highlights: highlights,
+                complete: complete,
+                date: date
+            }).then(() => {
+                this.props.navigation.goBack();
+                Toast.show("Qualification added");
+            });
         }
     }
 

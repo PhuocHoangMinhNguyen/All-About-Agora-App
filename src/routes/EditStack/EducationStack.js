@@ -12,6 +12,7 @@ const EducationStack = createStackNavigator(
         AddEducation
     },
     {
+        initialRouteName: "Education",
         mode: "modal",
         headerMode: "none",
     }

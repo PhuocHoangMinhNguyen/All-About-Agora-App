@@ -5,7 +5,12 @@ import firestore from "@react-native-firebase/firestore";
 
 class Education extends React.Component {
     componentDidMount() {
+        firestore().collection().where("userId", "==", (auth().currentUser || {}).uid)
+            .onSnapshot(querySnapshot => {
+                querySnapshot.forEach(documentSnapshot => {
 
+                });
+            });
     }
 
     render() {

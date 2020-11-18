@@ -12,6 +12,7 @@ const ExperienceStack = createStackNavigator(
         EditExperience
     },
     {
+        initialRouteName: "Experience",
         mode: "modal",
         headerMode: "none",
     }

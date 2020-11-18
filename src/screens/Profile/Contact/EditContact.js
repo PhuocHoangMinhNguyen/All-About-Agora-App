@@ -39,14 +39,11 @@ class EditContact extends React.Component {
                     lastName: lastName,
                     phoneNumber: phoneNumber,
                     homeLocation: homeLocation
-                },
-                {
-                    merge: true
-                }
+                }, { merge: true }
             ).then(() => {
                 this.props.navigation.goBack();
                 Toast.show("Contact details stored");
-            })
+            });
         }
     }
 
