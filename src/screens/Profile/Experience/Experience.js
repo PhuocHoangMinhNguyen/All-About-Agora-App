@@ -7,7 +7,7 @@ class Experience extends React.Component {
             <View style={styles.container}>
                 <Text style={styles.header}>Experience</Text>
                 <Text style={styles.body}>Highlight your experience to employers.</Text>
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("EditExperience")}>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("AddExperience")}>
                     <Text style={{ color: 'white' }}>Add Experience</Text>
                 </TouchableOpacity>
             </View>

@@ -3,11 +3,13 @@ import { Text, StyleSheet } from 'react-native'
 import { createStackNavigator } from 'react-navigation-stack';
 import Education from "../../screens/Profile/Education/Education";
 import EditEducation from "../../screens/Profile/Education/EditEducation";
+import AddEducation from '../../screens/Profile/Education/AddEducation';
 
 const EducationStack = createStackNavigator(
     {
         Education,
-        EditEducation
+        EditEducation,
+        AddEducation
     },
     {
         mode: "modal",

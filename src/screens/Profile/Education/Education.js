@@ -1,13 +1,19 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
 
 class Education extends React.Component {
+    componentDidMount() {
+
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>Education</Text>
                 <Text style={styles.body}>Tell employers about your education.</Text>
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("EditEducation")}>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("AddEducation")}>
                     <Text style={{ color: 'white' }}>Add qualification</Text>
                 </TouchableOpacity>
             </View>

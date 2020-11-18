@@ -7,6 +7,7 @@ class Contact extends React.Component {
     state = {
         contact: null
     }
+
     componentDidMount() {
         firestore().collection("contact").doc((auth().currentUser || {}).uid)
             .onSnapshot((documentSnapshot) => {
