@@ -5,8 +5,8 @@ import firestore from "@react-native-firebase/firestore";
 
 class ProfileScreen extends React.Component {
   state = {
-    user: {}
-  }
+    user: {},
+  };
 
   unsubscribe = null
 
@@ -17,11 +17,11 @@ class ProfileScreen extends React.Component {
       .onSnapshot(doc => {
         this.setState({ user: doc.data() });
       });
-  }
+  };
 
   componentWillUnmount() {
     this.unsubscribe();
-  }
+  };
 
   render() {
     const { user } = this.state
@@ -31,7 +31,7 @@ class ProfileScreen extends React.Component {
           <Text style={styles.name}>Add your name</Text>
           <Text style={styles.email}>{auth().currentUser.email}</Text>
         </View>
-      )
+      );
     } else {
       return (
         <View style={{ marginTop: 30, marginHorizontal: 20 }}>
@@ -39,8 +39,8 @@ class ProfileScreen extends React.Component {
           <Text style={styles.email}>{auth().currentUser.email}</Text>
         </View>
       );
-    }
-  }
+    };
+  };
 };
 
 const styles = StyleSheet.create({

@@ -19,13 +19,13 @@ ContactStack.navigationOptions = {
     tabBarLabel: ({ }) => (
         <Text style={styles.contact}>Contact</Text>
     )
-}
+};
 
 const styles = StyleSheet.create({
     contact: {
         color: '#FFF',
         fontSize: 13
-    }
+    },
 });
 
 export default ContactStack

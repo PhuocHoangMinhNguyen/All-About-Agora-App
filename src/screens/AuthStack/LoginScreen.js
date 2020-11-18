@@ -23,10 +23,10 @@ class LoginScreen extends React.Component {
     },
     errorMessage: null,
     showPassword: false
-  }
+  };
 
   // Handle Show, Hide Password
-  handlePassword = () => { this.setState({ showPassword: !this.state.showPassword }) }
+  handlePassword = () => { this.setState({ showPassword: !this.state.showPassword }) };
 
   // Handle Login using email and password.
   handleLogin = () => {
@@ -41,8 +41,8 @@ class LoginScreen extends React.Component {
     } else {
       auth().signInWithEmailAndPassword(emailTrim, password)
         .catch(error => this.setState({ errorMessage: error.message }));
-    }
-  }
+    };
+  };
 
   render() {
     const { errorMessage, showPassword } = this.state
@@ -104,7 +104,7 @@ class LoginScreen extends React.Component {
         </ScrollView>
       </View >
     );
-  }
+  };
 };
 
 const styles = StyleSheet.create({

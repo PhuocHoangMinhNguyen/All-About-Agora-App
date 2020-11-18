@@ -22,13 +22,13 @@ EducationStack.navigationOptions = {
     tabBarLabel: ({ }) => (
         <Text style={styles.education}>Education</Text>
     )
-}
+};
 
 const styles = StyleSheet.create({
     education: {
         color: '#FFF',
         fontSize: 13
-    }
+    },
 });
 
 export default EducationStack

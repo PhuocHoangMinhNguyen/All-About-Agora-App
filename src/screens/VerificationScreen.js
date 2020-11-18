@@ -31,7 +31,7 @@ class VerificationScreen extends React.Component {
                 </TouchableOpacity>
             </View>
         );
-    }
+    };
 };
 
 const styles = StyleSheet.create({
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     signOutText: {
         color: "#1565C0",
         textDecorationLine: "underline"
-    }
+    },
 });
 
 export default VerificationScreen

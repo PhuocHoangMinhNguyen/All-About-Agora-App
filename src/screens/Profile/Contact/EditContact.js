@@ -12,16 +12,16 @@ class EditContact extends React.Component {
             lastName: '',
             phoneNumber: '',
             homeLocation: '',
-        }
-    }
+        },
+    };
 
     componentDidMount = async () => {
         const firebaseContact = await firestore().collection("contact").doc((auth().currentUser || {}).uid).get();
         if (firebaseContact.exists) {
             console.log(firebaseContact.data())
             this.setState({ contact: firebaseContact.data() });
-        }
-    }
+        };
+    };
 
     saveContact = () => {
         const { firstName, lastName, phoneNumber, homeLocation } = this.state.contact
@@ -44,8 +44,8 @@ class EditContact extends React.Component {
                 this.props.navigation.goBack();
                 Toast.show("Contact details stored");
             });
-        }
-    }
+        };
+    };
 
     render() {
         const { firstName, lastName, phoneNumber, homeLocation } = this.state.contact
@@ -86,9 +86,9 @@ class EditContact extends React.Component {
                         value={homeLocation} />
                 </View>
             </View>
-        )
-    }
-}
+        );
+    };
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth,
         height: 40,
         fontSize: 15,
-    }
+    },
 });
 
 export default EditContact

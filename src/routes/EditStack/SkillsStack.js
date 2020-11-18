@@ -20,13 +20,13 @@ SkillsStack.navigationOptions = {
     tabBarLabel: ({ }) => (
         <Text style={styles.skills}>Skills</Text>
     )
-}
+};
 
 const styles = StyleSheet.create({
     skills: {
         color: '#FFF',
         fontSize: 13
-    }
+    },
 });
 
 export default SkillsStack

@@ -17,7 +17,7 @@ class AddExperience extends React.Component {
         endDate: Date.now(),
         startDateText: 'Start date',
         endDateText: 'End date',
-    }
+    };
 
     onStartChange = (event, selectedDate) => {
         const currentDate = selectedDate || this.state.startDate
@@ -26,7 +26,7 @@ class AddExperience extends React.Component {
             startDate: currentDate,
             startDateText: moment(currentDate).format('MMM Do YYYY'),
         });
-    }
+    };
 
     onEndChange = (event, selectedDate) => {
         const currentDate = selectedDate || this.state.endDate
@@ -35,11 +35,11 @@ class AddExperience extends React.Component {
             endDate: currentDate,
             endDateText: moment(currentDate).format('MMM Do YYYY'),
         });
-    }
+    };
 
     saveExperience = () => {
 
-    }
+    };
 
     render() {
         const { job, company, description, inRole, startDateText, endDateText, showStartDate, showEndDate, startDate, endDate } = this.state
@@ -109,9 +109,9 @@ class AddExperience extends React.Component {
                         value={description} />
                 </View>
             </View>
-        )
-    }
-}
+        );
+    };
+};
 
 const styles = StyleSheet.create({
     container: {

@@ -12,7 +12,7 @@ import Material from "react-native-vector-icons/MaterialCommunityIcons";
 class DrawerMenu extends React.Component {
     handleSignOut = () => {
         auth().signOut();
-    }
+    };
 
     render() {
         return (
@@ -59,7 +59,7 @@ class DrawerMenu extends React.Component {
                 </TouchableOpacity>
             </View>
         );
-    }
+    };
 };
 
 const styles = StyleSheet.create({

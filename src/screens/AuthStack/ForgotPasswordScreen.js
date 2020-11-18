@@ -10,7 +10,7 @@ var confusedMan = require('../../assets/images/confusedMan.png');
 class ForgotPasswordScreen extends React.Component {
     state = {
         forgottenEmail: ""
-    }
+    };
 
     // A link will be sent to provided email address to reset password.
     handleChangePassword = () => {
@@ -21,8 +21,8 @@ class ForgotPasswordScreen extends React.Component {
             auth().sendPasswordResetEmail(emailTrim)
                 .then(() => this.props.navigation.navigate("LoginScreen"))
                 .then(() => Toast.show("Please Check your Email..."));
-        }
-    }
+        };
+    };
 
     render() {
         return (
@@ -53,7 +53,7 @@ class ForgotPasswordScreen extends React.Component {
                 </View>
             </View>
         );
-    }
+    };
 };
 
 const styles = StyleSheet.create({

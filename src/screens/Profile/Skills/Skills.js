@@ -6,21 +6,22 @@ import firestore from "@react-native-firebase/firestore";
 class Skills extends React.Component {
     state = {
         skills: null
-    }
+    };
+
     componentDidMount() {
         firestore().collection("skills").doc((auth().currentUser || {}).uid)
             .onSnapshot((documentSnapshot) => {
                 this.setState({ skills: documentSnapshot.data().skills });
             });
-    }
+    };
 
     renderItem = (item) => {
         return (
             <View style={styles.item}>
                 <Text style={{ color: 'white', alignSelf: "center", flex: 1, textAlign: "center", marginHorizontal: 10 }}>{item}</Text>
             </View>
-        )
-    }
+        );
+    };
 
     render() {
         const { skills } = this.state
@@ -34,7 +35,7 @@ class Skills extends React.Component {
                         <Text style={{ color: 'white' }}>Add skills</Text>
                     </TouchableOpacity>
                 </View>
-            )
+            );
         } else {
             return (
                 <View style={styles.container}>
@@ -49,10 +50,10 @@ class Skills extends React.Component {
                         renderItem={({ item }) => this.renderItem(item)}
                         keyExtractor={(item, index) => index.toString()} />
                 </View>
-            )
-        }
-    }
-}
+            );
+        };
+    };
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         backgroundColor: "#003787",
         marginVertical: 5
-    }
+    },
 });
 
 export default Skills

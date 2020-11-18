@@ -6,14 +6,14 @@ import firestore from "@react-native-firebase/firestore";
 class Contact extends React.Component {
     state = {
         contact: null
-    }
+    };
 
     componentDidMount() {
         firestore().collection("contact").doc((auth().currentUser || {}).uid)
             .onSnapshot((documentSnapshot) => {
                 this.setState({ contact: documentSnapshot.data() });
             });
-    }
+    };
 
     render() {
         const { contact } = this.state
@@ -26,7 +26,7 @@ class Contact extends React.Component {
                         <Text style={{ color: 'white' }}>Add Contact Details</Text>
                     </TouchableOpacity>
                 </View>
-            )
+            );
         } else {
             return (
                 <View style={styles.container}>
@@ -67,10 +67,10 @@ class Contact extends React.Component {
                         <Text style={{ color: 'white' }}>Add Contact Details</Text>
                     </TouchableOpacity>
                 </View>
-            )
-        }
-    }
-}
+            );
+        };
+    };
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     },
     columnRight: {
         flex: 2
-    }
+    },
 });
 
 export default Contact

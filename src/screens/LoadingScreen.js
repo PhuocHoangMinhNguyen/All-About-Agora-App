@@ -7,7 +7,7 @@ class LoadingScreen extends React.Component {
     auth().onAuthStateChanged(user => {
       this.props.navigation.navigate(user ? (user.emailVerified ? "App" : "Verify") : "AuthStack")
     });
-  }
+  };
 
   render() {
     return (
@@ -16,7 +16,7 @@ class LoadingScreen extends React.Component {
         <ActivityIndicator size="large" />
       </View>
     );
-  }
+  };
 };
 
 const styles = StyleSheet.create({
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
-  }
+  },
 });
 
 export default LoadingScreen

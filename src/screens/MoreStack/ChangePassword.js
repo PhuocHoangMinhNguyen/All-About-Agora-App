@@ -12,7 +12,7 @@ class ChangePassword extends React.Component {
         auth().sendPasswordResetEmail(auth().currentUser.email).then(() => {
             Toast.show("Please Check your Email...");
         });
-    }
+    };
 
     render() {
         return (
@@ -29,7 +29,7 @@ class ChangePassword extends React.Component {
                 </TouchableOpacity>
             </View>
         );
-    }
+    };
 };
 
 const styles = StyleSheet.create({
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     },
     submitText: {
         color: "#FFF"
-    }
+    },
 });
 
 export default ChangePassword

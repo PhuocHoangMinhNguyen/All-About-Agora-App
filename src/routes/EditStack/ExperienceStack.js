@@ -22,13 +22,13 @@ ExperienceStack.navigationOptions = {
     tabBarLabel: ({ }) => (
         <Text style={styles.experience}>Experience</Text>
     )
-}
+};
 
 const styles = StyleSheet.create({
     experience: {
         color: '#FFF',
         fontSize: 13
-    }
+    },
 });
 
 export default ExperienceStack

@@ -20,7 +20,7 @@ class Terms extends React.Component {
                 </TouchableOpacity>
             </View>
         );
-    }
+    };
 };
 
 const styles = StyleSheet.create({

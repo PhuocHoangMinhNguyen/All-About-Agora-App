@@ -11,9 +11,9 @@ class Experience extends React.Component {
                     <Text style={{ color: 'white' }}>Add Experience</Text>
                 </TouchableOpacity>
             </View>
-        )
-    }
-}
+        );
+    };
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         marginVertical: 12,
         marginEnd: 16
-    }
+    },
 });
 
 export default Experience

@@ -9,14 +9,14 @@ class EditSkills extends React.Component {
     state = {
         skills: [],
         addingSkill: ''
-    }
+    };
 
     componentDidMount = async () => {
         const firebaseSkills = await firestore().collection("skills").doc((auth().currentUser || {}).uid).get();
         if (firebaseSkills.exists) {
             this.setState({ skills: firebaseSkills.data().skills });
-        }
-    }
+        };
+    };
 
     addSkill = () => {
         const { addingSkill, skills } = this.state
@@ -27,20 +27,19 @@ class EditSkills extends React.Component {
                 addingSkill: '',
                 skills: tempArray
             });
-        }
-    }
+        };
+    };
 
     deleteSkill(item) {
-        console.log(item)
         const { skills } = this.state
         const tempArray = skills
         tempArray.forEach((temp, i) => {
             if (item == temp) {
                 tempArray.splice(i, 1)
             }
-        })
-        this.setState({ skills: tempArray })
-    }
+        });
+        this.setState({ skills: tempArray });
+    };
 
     saveSkills = () => {
         firestore().collection("skills").doc((auth().currentUser || {}).uid).set(
@@ -50,8 +49,8 @@ class EditSkills extends React.Component {
         ).then(() => {
             this.props.navigation.goBack();
             Toast.show("Skills added");
-        })
-    }
+        });
+    };
 
     renderItem = (item) => {
         return (
@@ -61,8 +60,8 @@ class EditSkills extends React.Component {
                     <Ionicons name="close" size={20} color="white" />
                 </TouchableOpacity>
             </View>
-        )
-    }
+        );
+    };
 
     render() {
         return (
@@ -90,9 +89,9 @@ class EditSkills extends React.Component {
                     renderItem={({ item }) => this.renderItem(item)}
                     keyExtractor={(item, index) => index.toString()} />
             </View>
-        )
-    }
-}
+        );
+    };
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -127,7 +126,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         backgroundColor: "#003787",
         marginVertical: 5
-    }
+    },
 });
 
 export default EditSkills

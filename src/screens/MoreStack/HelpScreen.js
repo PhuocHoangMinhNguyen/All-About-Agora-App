@@ -197,7 +197,7 @@ class HelpScreen extends React.Component {
                 </View>
             </ScrollView>
         );
-    }
+    };
 };
 
 const styles = StyleSheet.create({
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     answerText: {
         color: "#FFF",
         marginBottom: 10
-    }
+    },
 });
 
 export default HelpScreen

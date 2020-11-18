@@ -17,7 +17,7 @@ class AddEducation extends React.Component {
         finish: 'Finished',
         show: false,
         date: Date.now()
-    }
+    };
 
     onChange = (event, selectedDate) => {
         const currentDate = selectedDate || this.state.date
@@ -46,8 +46,8 @@ class AddEducation extends React.Component {
                 this.props.navigation.goBack();
                 Toast.show("Qualification added");
             });
-        }
-    }
+        };
+    };
 
     render() {
         const { course, institution, highlights, complete, finish, show, date } = this.state
@@ -109,9 +109,9 @@ class AddEducation extends React.Component {
                         value={highlights} />
                 </View>
             </View>
-        )
-    }
-}
+        );
+    };
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth,
         height: 40,
         fontSize: 15,
-    }
+    },
 });
 
 export default AddEducation

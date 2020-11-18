@@ -25,12 +25,12 @@ class RegisterScreen extends React.Component {
     errorMessage: null,
     showPassword: false,
     toggleCheckBox: false,
-  }
+  };
 
   // To Show or Hide Password
   handlePassword = () => {
     this.setState({ showPassword: !this.state.showPassword })
-  }
+  };
 
   // Check if all information is entered before create a new user.
   handleSignUp = () => {
@@ -43,8 +43,8 @@ class RegisterScreen extends React.Component {
       Toast.show("Please Agree to Terms of Services", Toast.LONG);
     } else {
       this.createUser(user);
-    }
-  }
+    };
+  };
 
   // create a new user in Firebase Authentication with email and password, 
   // then store the information in Firestore,
@@ -55,7 +55,7 @@ class RegisterScreen extends React.Component {
         .catch(error => this.setState({ errorMessage: error.message }));
       await auth().currentUser.sendEmailVerification();
     } catch (error) { }
-  }
+  };
 
   render() {
     const { email, password } = this.state.user
@@ -133,7 +133,7 @@ class RegisterScreen extends React.Component {
         </ScrollView>
       </View>
     );
-  }
+  };
 };
 
 const styles = StyleSheet.create({
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
   },
   termsOfServices: {
     textDecorationLine: "underline"
-  }
+  },
 });
 
 export default RegisterScreen
