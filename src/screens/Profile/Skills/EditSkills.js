@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, TextInput, FlatList } from 'r
 import Ionicons from "react-native-vector-icons/Ionicons";
 import auth from "@react-native-firebase/auth";
 import firestore from "@react-native-firebase/firestore";
+import Toast from "react-native-simple-toast";
 
 class EditSkills extends React.Component {
     state = {
@@ -10,8 +11,11 @@ class EditSkills extends React.Component {
         addingSkill: ''
     }
 
-    componentDidMount() {
-
+    componentDidMount = async () => {
+        const firebaseSkills = await firestore().collection("skills").doc((auth().currentUser || {}).uid).get();
+        if (firebaseSkills.exists) {
+            this.setState({ skills: firebaseSkills.data().skills });
+        }
     }
 
     addSkill = () => {
@@ -39,7 +43,14 @@ class EditSkills extends React.Component {
     }
 
     saveSkills = () => {
-
+        firestore().collection("skills").doc((auth().currentUser || {}).uid).set(
+            {
+                skills: this.state.skills
+            }, { merge: true }
+        ).then(() => {
+            this.props.navigation.goBack();
+            Toast.show("Skills added");
+        })
     }
 
     renderItem = (item) => {
@@ -77,8 +88,7 @@ class EditSkills extends React.Component {
                 <FlatList style={styles.list}
                     data={this.state.skills}
                     renderItem={({ item }) => this.renderItem(item)}
-                    horizontal={true}
-                    keyExtractor={(item) => item.id} />
+                    keyExtractor={(item, index) => index.toString()} />
             </View>
         )
     }
@@ -108,7 +118,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     list: {
-        padding: 15,
+        padding: 20,
     },
     item: {
         minWidth: 100,
@@ -116,7 +126,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         flexDirection: "row",
         backgroundColor: "#003787",
-        marginHorizontal: 5
+        marginVertical: 5
     }
 });
 

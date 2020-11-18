@@ -18,6 +18,7 @@ class EditContact extends React.Component {
     componentDidMount = async () => {
         const firebaseContact = await firestore().collection("contact").doc((auth().currentUser || {}).uid).get();
         if (firebaseContact.exists) {
+            console.log(firebaseContact.data())
             this.setState({ contact: firebaseContact.data() });
         }
     }

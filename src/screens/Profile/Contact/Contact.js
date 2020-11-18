@@ -8,11 +8,9 @@ class Contact extends React.Component {
         contact: null
     }
     componentDidMount() {
-        let temp = null
         firestore().collection("contact").doc((auth().currentUser || {}).uid)
             .onSnapshot((documentSnapshot) => {
-                temp = documentSnapshot.data();
-                this.setState({ contact: temp });
+                this.setState({ contact: documentSnapshot.data() });
             });
     }
 
