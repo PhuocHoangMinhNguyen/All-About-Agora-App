@@ -36,6 +36,7 @@ class Experience extends React.Component {
     deleteItem(item) {
         firestore().collection("experience").doc(item.key).delete()
             .then(() => {
+                this.setState({ dialogVisible: false });
                 Toast.show("Role deleted");
             });
     };
@@ -46,7 +47,7 @@ class Experience extends React.Component {
                 onPress={() => this.props.navigation.navigate("EditExperience")}>
                 <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                     <Text style={{ fontWeight: 'bold', fontSize: 15 }}>{item.job}</Text>
-                    <TouchableOpacity onPress={() => this.setState({ dialogVisible: item })}>
+                    <TouchableOpacity onPress={() => this.setState({ dialogVisible: true })}>
                         <Ionicons name="close" size={20} />
                     </TouchableOpacity>
                 </View>
