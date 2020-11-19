@@ -48,17 +48,23 @@ class AddEducation extends React.Component {
                     Toast.show("Qualification added");
                 });
             } else {
-                firestore().collection("education").add({
-                    userId: (auth().currentUser || {}).uid,
-                    course: course,
-                    institution: institution,
-                    highlights: highlights,
-                    complete: complete,
-                    date: date
-                }).then(() => {
-                    this.props.navigation.goBack();
-                    Toast.show("Qualification added");
-                });
+                if (complete == true && date >= Date.now()) {
+                    Toast.show("Finish date needs to be before today. If the qualification is not completed, please tick on the box");
+                } else if (complete == false && date < Date.now()) {
+                    Toast.show("Expected finish date needs to be after today. If the qualification is completed, please tick on the box");
+                } else {
+                    firestore().collection("education").add({
+                        userId: (auth().currentUser || {}).uid,
+                        course: course,
+                        institution: institution,
+                        highlights: highlights,
+                        complete: complete,
+                        date: date
+                    }).then(() => {
+                        this.props.navigation.goBack();
+                        Toast.show("Qualification added");
+                    });
+                }
             };
         };
     };
@@ -118,6 +124,7 @@ class AddEducation extends React.Component {
                 )}
                 <View style={styles.layout}>
                     <TextInput style={styles.input}
+                        multiline
                         placeholder="Course highlights (optional)"
                         onChangeText={highlights => this.setState({ highlights: highlights })}
                         value={highlights} />

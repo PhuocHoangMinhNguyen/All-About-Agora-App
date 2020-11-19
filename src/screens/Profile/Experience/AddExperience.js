@@ -41,17 +41,49 @@ class AddExperience extends React.Component {
     };
 
     saveExperience = () => {
-        const { job, company, startDateText, endDateText, inRole } = this.state
+        const { job, company, description, startDateText, endDateText, inRole, startDate, endDate } = this.state
         if (job.trim() == '') {
             Toast.show('Please enter job title');
         } else if (company.trim() == '') {
             Toast.show('Please enter company name');
         } else if (startDateText == 'Start date') {
             Toast.show('Please enter start date');
+        } else if (startDate > Date.now()) {
+            Toast.show('Start Date needs to be before today');
         } else if (inRole == false && endDateText == 'End date') {
             Toast.show('Please enter end date for completed role');
+        } else if (endDate > Date.now()) {
+            Toast.show('End Date needs to be before today');
+        } else if (startDate > endDate) {
+            Toast.show('End date has to be after start date');
         } else {
-
+            if (inRole == true) {
+                firestore().collection("experience").add({
+                    userId: (auth().currentUser || {}).uid,
+                    job: job,
+                    company: company,
+                    description: description,
+                    inRole: inRole,
+                    startDate: startDate,
+                    endDate: null
+                }).then(() => {
+                    this.props.navigation.goBack();
+                    Toast.show("Qualification added");
+                });
+            } else {
+                firestore().collection("experience").add({
+                    userId: (auth().currentUser || {}).uid,
+                    job: job,
+                    company: company,
+                    description: description,
+                    inRole: inRole,
+                    startDate: startDate,
+                    endDate: endDate
+                }).then(() => {
+                    this.props.navigation.goBack();
+                    Toast.show("Qualification added");
+                });
+            }
         }
     };
 
@@ -118,6 +150,7 @@ class AddExperience extends React.Component {
                 </View>
                 <View style={styles.layout}>
                     <TextInput style={styles.input}
+                        multiline
                         placeholder="Description (recommended)"
                         onChangeText={description => this.setState({ description: description })}
                         value={description} />
