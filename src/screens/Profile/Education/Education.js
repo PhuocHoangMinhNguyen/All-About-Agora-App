@@ -36,7 +36,7 @@ class Education extends React.Component {
         firestore().collection("education").doc(item.key).delete()
             .then(() => {
                 Toast.show("Qualification deleted");
-            })
+            });
     };
 
     renderItem = (item) => {

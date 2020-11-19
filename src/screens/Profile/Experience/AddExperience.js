@@ -41,17 +41,15 @@ class AddExperience extends React.Component {
     };
 
     saveExperience = () => {
-        const { job, company } = this.state
+        const { job, company, startDateText, endDateText, inRole } = this.state
         if (job.trim() == '') {
             Toast.show('Please enter job title');
         } else if (company.trim() == '') {
             Toast.show('Please enter company name');
-            // } else if () {
-
-            // } else if () {
-
-            // } else if () {
-
+        } else if (startDateText == 'Start date') {
+            Toast.show('Please enter start date');
+        } else if (inRole == false && endDateText == 'End date') {
+            Toast.show('Please enter end date for completed role');
         } else {
 
         }
