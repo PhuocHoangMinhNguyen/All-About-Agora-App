@@ -42,9 +42,17 @@ class Experience extends React.Component {
     };
 
     renderItem = (item) => {
+        let dataInfor = {
+            company: item.company,
+            description: item.description,
+            endDate: item.endDate.toDate(),
+            inRole: item.inRole,
+            job: item.job,
+            startDate: item.startDate.toDate(),
+        }
         return (
             <TouchableOpacity style={styles.item}
-                onPress={() => this.props.navigation.navigate("EditExperience")}>
+                onPress={() => this.props.navigation.navigate("EditExperience", dataInfor)}>
                 <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                     <Text style={{ fontWeight: 'bold', fontSize: 15 }}>{item.job}</Text>
                     <TouchableOpacity onPress={() => this.deleteItem(item)}>

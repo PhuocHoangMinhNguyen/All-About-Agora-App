@@ -10,14 +10,14 @@ import Toast from 'react-native-simple-toast';
 
 class AddExperience extends React.Component {
     state = {
-        job: '',
         company: '',
         description: '',
+        endDate: Date.now(),
         inRole: true,
+        job: '',
+        startDate: Date.now(),
         showStartDate: false,
         showEndDate: false,
-        startDate: Date.now(),
-        endDate: Date.now(),
         startDateText: 'Start date',
         endDateText: 'End date',
     };
