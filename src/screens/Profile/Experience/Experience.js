@@ -43,6 +43,7 @@ class Experience extends React.Component {
 
     renderItem = (item) => {
         let dataInfor = {
+            key: item.key,
             company: item.company,
             description: item.description,
             endDate: item.endDate.toDate(),
