@@ -47,7 +47,7 @@ class Experience extends React.Component {
                 onPress={() => this.props.navigation.navigate("EditExperience")}>
                 <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                     <Text style={{ fontWeight: 'bold', fontSize: 15 }}>{item.job}</Text>
-                    <TouchableOpacity onPress={() => this.setState({ dialogVisible: true })}>
+                    <TouchableOpacity onPress={() => this.deleteItem(item)}>
                         <Ionicons name="close" size={20} />
                     </TouchableOpacity>
                 </View>
@@ -59,7 +59,7 @@ class Experience extends React.Component {
                         : <Text>{moment(item.endDate.toDate()).format('MMM Do YYYY')}</Text>
                     }
                 </View>
-                <ConfirmDialog
+                {/* <ConfirmDialog
                     visible={this.state.dialogVisible}
                     title="Alert"
                     message="Are you sure?"
@@ -75,7 +75,7 @@ class Experience extends React.Component {
                             Toast.show("Your request is canceled !");
                         }
                     }}
-                />
+                /> */}
             </TouchableOpacity>
         );
     };

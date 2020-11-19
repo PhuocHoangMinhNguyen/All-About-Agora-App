@@ -36,17 +36,27 @@ class Education extends React.Component {
     deleteItem(item) {
         firestore().collection("education").doc(item.key).delete()
             .then(() => {
+                this.setState({ dialogVisible: false });
                 Toast.show("Qualification deleted");
             });
     };
 
     renderItem = (item) => {
+        let dataInfor = {
+            course: item.course,
+            key: item.key,
+            institution: item.institution,
+            complete: item.complete,
+            date: item.date.toDate(),
+            highlights: item.highlights,
+            userId: item.userId
+        }
         return (
             <TouchableOpacity style={styles.item}
-                onPress={() => this.props.navigation.navigate("EditEducation")}>
+                onPress={() => this.props.navigation.navigate("EditEducation", dataInfor)}>
                 <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                     <Text style={{ fontWeight: 'bold', fontSize: 15 }}>{item.course}</Text>
-                    <TouchableOpacity onPress={() => this.setState({ dialogVisible: true })}>
+                    <TouchableOpacity onPress={() => this.deleteItem(item)}>
                         <Ionicons name="close" size={20} />
                     </TouchableOpacity>
                 </View>
@@ -61,7 +71,7 @@ class Education extends React.Component {
                         : <Text>{moment(item.date.toDate()).format('MMM Do YYYY')}</Text>
                     }
                 </View>
-                <ConfirmDialog
+                {/* <ConfirmDialog
                     visible={this.state.dialogVisible}
                     title="Alert"
                     message="Are you sure?"
@@ -77,7 +87,7 @@ class Education extends React.Component {
                             Toast.show("Your request is canceled !");
                         }
                     }}
-                />
+                /> */}
             </TouchableOpacity>
         );
     };
