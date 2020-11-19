@@ -29,23 +29,37 @@ class AddEducation extends React.Component {
     };
 
     saveEducation = () => {
-        const { course, institution, highlights, complete, date } = this.state
+        const { course, institution, highlights, complete, date, finish } = this.state
         if (course.trim() == '') {
             Toast.show("Please enter course details");
         } else if (institution == '') {
             Toast.show("Please enter institution name");
         } else {
-            firestore().collection("education").add({
-                userId: (auth().currentUser || {}).uid,
-                course: course,
-                institution: institution,
-                highlights: highlights,
-                complete: complete,
-                date: date
-            }).then(() => {
-                this.props.navigation.goBack();
-                Toast.show("Qualification added");
-            });
+            if (finish == 'Finished' || finish == 'Expected finish') {
+                firestore().collection("education").add({
+                    userId: (auth().currentUser || {}).uid,
+                    course: course,
+                    institution: institution,
+                    highlights: highlights,
+                    complete: complete,
+                    date: null
+                }).then(() => {
+                    this.props.navigation.goBack();
+                    Toast.show("Qualification added");
+                });
+            } else {
+                firestore().collection("education").add({
+                    userId: (auth().currentUser || {}).uid,
+                    course: course,
+                    institution: institution,
+                    highlights: highlights,
+                    complete: complete,
+                    date: date
+                }).then(() => {
+                    this.props.navigation.goBack();
+                    Toast.show("Qualification added");
+                });
+            };
         };
     };
 

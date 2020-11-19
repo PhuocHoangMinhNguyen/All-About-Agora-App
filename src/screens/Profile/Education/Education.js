@@ -55,7 +55,10 @@ class Education extends React.Component {
                         ? <Text>Graduated </Text>
                         : <Text>Graduating </Text>
                     }
-                    <Text>{moment(item.date).format('MMM Do YYYY')}</Text>
+                    {(item.date == null)
+                        ? <Text></Text>
+                        : <Text>{moment(item.date.toDate()).format('MMM Do YYYY')}</Text>
+                    }
                 </View>
             </TouchableOpacity>
         );

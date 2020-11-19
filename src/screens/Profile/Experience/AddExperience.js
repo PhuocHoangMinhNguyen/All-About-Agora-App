@@ -4,6 +4,9 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import CheckBox from "@react-native-community/checkbox";
 import DatePicker from "@react-native-community/datetimepicker";
 import moment from 'moment';
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
+import Toast from 'react-native-simple-toast';
 
 class AddExperience extends React.Component {
     state = {
@@ -38,7 +41,20 @@ class AddExperience extends React.Component {
     };
 
     saveExperience = () => {
+        const { job, company } = this.state
+        if (job.trim() == '') {
+            Toast.show('Please enter job title');
+        } else if (company.trim() == '') {
+            Toast.show('Please enter company name');
+            // } else if () {
 
+            // } else if () {
+
+            // } else if () {
+
+        } else {
+
+        }
     };
 
     render() {
