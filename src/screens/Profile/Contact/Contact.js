@@ -8,11 +8,17 @@ class Contact extends React.Component {
         contact: null
     };
 
+    unsubscribe = null
+
     componentDidMount() {
-        firestore().collection("contact").doc((auth().currentUser || {}).uid)
+        this.unsubscribe = firestore().collection("contact").doc((auth().currentUser || {}).uid)
             .onSnapshot((documentSnapshot) => {
                 this.setState({ contact: documentSnapshot.data() });
             });
+    };
+
+    componentWillUnmount() {
+        this.unsubscribe();
     };
 
     render() {
@@ -64,7 +70,7 @@ class Contact extends React.Component {
                         </View>
                     </View>
                     <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("EditContact")}>
-                        <Text style={{ color: 'white' }}>Add Contact Details</Text>
+                        <Text style={{ color: 'white' }}>Edit Contact Details</Text>
                     </TouchableOpacity>
                 </View>
             );

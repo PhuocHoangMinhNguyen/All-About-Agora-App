@@ -8,11 +8,17 @@ class Skills extends React.Component {
         skills: null
     };
 
+    unsubscribe = null
+
     componentDidMount() {
-        firestore().collection("skills").doc((auth().currentUser || {}).uid)
+        this.unsubscribe = firestore().collection("skills").doc((auth().currentUser || {}).uid)
             .onSnapshot((documentSnapshot) => {
                 this.setState({ skills: documentSnapshot.data().skills });
             });
+    };
+
+    componentWillUnmount() {
+        this.unsubscribe();
     };
 
     renderItem = (item) => {

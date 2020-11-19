@@ -3,30 +3,60 @@ import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import auth from "@react-native-firebase/auth";
 import firestore from "@react-native-firebase/firestore";
 import { FlatList } from 'react-native-gesture-handler';
+import moment from 'moment';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Toast from 'react-native-simple-toast';
 
 class Education extends React.Component {
     state = {
         qualifications: []
     };
 
+    unsubscribe = null
+
     componentDidMount() {
-        let temp = [];
-        firestore().collection("education").where("userId", "==", (auth().currentUser || {}).uid)
+        this.unsubscribe = firestore().collection("education").where("userId", "==", (auth().currentUser || {}).uid)
             .onSnapshot(querySnapshot => {
+                let temp = [];
                 querySnapshot.forEach(documentSnapshot => {
-                    temp.push(documentSnapshot.data());
+                    temp.push({
+                        ...documentSnapshot.data(),
+                        key: documentSnapshot.id
+                    });
                 });
-                this.setState({ qualifications: temp })
+                this.setState({ qualifications: temp });
             });
+    };
+
+    componentWillUnmount() {
+        this.unsubscribe();
+    };
+
+    deleteItem(item) {
+        firestore().collection("education").doc(item.key).delete()
+            .then(() => {
+                Toast.show("Qualification deleted");
+            })
     };
 
     renderItem = (item) => {
         return (
             <TouchableOpacity style={styles.item}
                 onPress={() => this.props.navigation.navigate("EditEducation")}>
-                <Text>{item.course}</Text>
+                <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+                    <Text style={{ fontWeight: 'bold', fontSize: 15 }}>{item.course}</Text>
+                    <TouchableOpacity onPress={() => this.deleteItem(item)}>
+                        <Ionicons name="close" size={20} />
+                    </TouchableOpacity>
+                </View>
                 <Text>{item.institution}</Text>
-                {(item.complete == true) ? <Text>Graduated</Text> : <Text>Graduating</Text>}
+                <View style={{ flexDirection: "row", marginTop: 10 }}>
+                    {(item.complete == true)
+                        ? <Text>Graduated </Text>
+                        : <Text>Graduating </Text>
+                    }
+                    <Text>{moment(item.date).format('MMM Do YYYY')}</Text>
+                </View>
             </TouchableOpacity>
         );
     };
@@ -46,7 +76,12 @@ class Education extends React.Component {
         } else {
             return (
                 <View style={styles.container}>
-                    <Text style={styles.header}>Education</Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+                        <Text style={styles.header}>Education</Text>
+                        <TouchableOpacity style={{ alignSelf: "center" }} onPress={() => this.props.navigation.navigate("AddEducation")}>
+                            <Text style={{ color: "blue", fontWeight: "bold" }}>Add</Text>
+                        </TouchableOpacity>
+                    </View>
                     <FlatList style={styles.list}
                         data={qualifications}
                         renderItem={({ item }) => this.renderItem(item)}
@@ -80,10 +115,12 @@ const styles = StyleSheet.create({
         marginEnd: 16
     },
     list: {
-        padding: 20,
+        marginVertical: 10
     },
     item: {
-
+        backgroundColor: "#c2f1ff",
+        padding: 10,
+        marginVertical: 10
     },
 });
 
