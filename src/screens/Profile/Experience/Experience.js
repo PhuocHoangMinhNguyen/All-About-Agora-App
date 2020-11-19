@@ -5,10 +5,12 @@ import firestore from "@react-native-firebase/firestore";
 import moment from 'moment';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-simple-toast';
+import { ConfirmDialog } from 'react-native-simple-dialogs';
 
 class Experience extends React.Component {
     state = {
-        roles: []
+        roles: [],
+        dialogVisible: false
     };
 
     unsubscribe = null
@@ -44,7 +46,7 @@ class Experience extends React.Component {
                 onPress={() => this.props.navigation.navigate("EditExperience")}>
                 <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                     <Text style={{ fontWeight: 'bold', fontSize: 15 }}>{item.job}</Text>
-                    <TouchableOpacity onPress={() => this.deleteItem(item)}>
+                    <TouchableOpacity onPress={() => this.setState({ dialogVisible: item })}>
                         <Ionicons name="close" size={20} />
                     </TouchableOpacity>
                 </View>
@@ -56,6 +58,23 @@ class Experience extends React.Component {
                         : <Text>{moment(item.endDate.toDate()).format('MMM Do YYYY')}</Text>
                     }
                 </View>
+                <ConfirmDialog
+                    visible={this.state.dialogVisible}
+                    title="Alert"
+                    message="Are you sure?"
+                    onTouchOutside={() => this.setState({ dialogVisible: false })}
+                    positiveButton={{
+                        title: "YES",
+                        onPress: () => { this.deleteItem(item) }
+                    }}
+                    negativeButton={{
+                        title: "NO",
+                        onPress: () => {
+                            this.setState({ dialogVisible: false });
+                            Toast.show("Your request is canceled !");
+                        }
+                    }}
+                />
             </TouchableOpacity>
         );
     };
