@@ -31,7 +31,6 @@ class Skills extends React.Component {
 
     render() {
         const { skills } = this.state
-        console.log(skills)
         if (skills == null) {
             return (
                 <View style={styles.container}>

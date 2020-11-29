@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native'
 import { createStackNavigator } from 'react-navigation-stack';
-import Experience from "../../screens/Profile/Experience/Experience";
-import EditExperience from "../../screens/Profile/Experience/EditExperience";
-import AddExperience from '../../screens/Profile/Experience/AddExperience'
+import Experience from "../../screens/4.Profile/Experience/Experience";
+import EditExperience from "../../screens/4.Profile/Experience/EditExperience";
+import AddExperience from '../../screens/4.Profile/Experience/AddExperience'
 
 const ExperienceStack = createStackNavigator(
     {

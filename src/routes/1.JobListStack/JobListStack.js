@@ -1,7 +1,7 @@
 import { createStackNavigator } from "react-navigation-stack";
-import JobAccepted from "../../screens/JobAccepted/JobAccepted";
-import JobDetails from '../../screens/JobAccepted/JobDetails';
-import Apply1 from '../../screens/JobAccepted/Apply/Apply1';
+import JobAccepted from "../../screens/1.JobList/JobList";
+import JobDetails from '../../screens/1.JobList/JobDetails';
+import Apply1 from '../../screens/1.JobList/Apply/Apply1';
 
 const JobListStack = createStackNavigator(
     {

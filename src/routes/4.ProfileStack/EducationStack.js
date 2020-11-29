@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native'
 import { createStackNavigator } from 'react-navigation-stack';
-import Education from "../../screens/Profile/Education/Education";
-import EditEducation from "../../screens/Profile/Education/EditEducation";
-import AddEducation from '../../screens/Profile/Education/AddEducation';
+import Education from "../../screens/4.Profile/Education/Education";
+import EditEducation from "../../screens/4.Profile/Education/EditEducation";
+import AddEducation from '../../screens/4.Profile/Education/AddEducation';
 
 const EducationStack = createStackNavigator(
     {

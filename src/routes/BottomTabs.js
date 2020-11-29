@@ -7,7 +7,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 
 // Job List
 import JobListStack from "./1.JobListStack/JobListStack";
-import SearchStack from "./2.JobAvailableStack/JobAvailableStack";
+import SearchStack from "./2.SearchStack/SearchStack";
 
 // My Activity
 import ActivityStack from "./3.ActivityStack/ActivityStack";

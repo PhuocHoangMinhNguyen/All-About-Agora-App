@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { createStackNavigator } from "react-navigation-stack";
-import SavedActivity from '../../screens/Activity/SavedActivity';
+import SavedActivity from '../../screens/3.Activity/SavedActivity';
 
 const SavedStack = createStackNavigator(
     {

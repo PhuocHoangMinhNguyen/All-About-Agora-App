@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
-import Contact from "../../screens/Profile/Contact/Contact";
-import EditContact from "../../screens/Profile/Contact/EditContact";
+import Contact from "../../screens/4.Profile/Contact/Contact";
+import EditContact from "../../screens/4.Profile/Contact/EditContact";
 
 const ContactStack = createStackNavigator(
     {

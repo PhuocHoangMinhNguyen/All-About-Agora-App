@@ -1,7 +1,7 @@
 import { createStackNavigator } from "react-navigation-stack";
-import HelpScreen from "../../screens/MoreStack/HelpScreen";
-import TermsOfServices from "../../screens/MoreStack/TermsOfServices";
-import ChangePassword from "../../screens/MoreStack/ChangePassword";
+import HelpScreen from "../../screens/5.More/HelpScreen";
+import TermsOfServices from "../../screens/5.More/TermsOfServices";
+import ChangePassword from "../../screens/5.More/ChangePassword";
 
 const MoreStack = createStackNavigator(
     {

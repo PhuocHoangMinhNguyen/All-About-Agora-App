@@ -5,7 +5,7 @@ import auth from '@react-native-firebase/auth';
 import moment from 'moment';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-class JobAccepted extends React.Component {
+class JobList extends React.Component {
     static navigationOptions = {
         title: <Text style={{ color: '#FFF' }}>Job List</Text>,
         headerStyle: { backgroundColor: '#001F4C' },
@@ -131,4 +131,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default JobAccepted
+export default JobList
