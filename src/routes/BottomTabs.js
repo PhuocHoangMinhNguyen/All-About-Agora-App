@@ -1,29 +1,29 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from "react-navigation-tabs";
-import { createDrawerNavigator } from "react-navigation-drawer";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
+
 // Job List
-import JobAcceptedStack from "./1. JobAcceptedStack/JobAcceptedStack";
-import JobAvailableStack from "./2. JobAvailableStack/JobAvailableStack";
+import JobListStack from "./1.JobListStack/JobListStack";
+import SearchStack from "./2.JobAvailableStack/JobAvailableStack";
 
 // My Activity
-import ActivityStack from "./3. ActivityStack/ActivityStack";
+import ActivityStack from "./3.ActivityStack/ActivityStack";
 
 // Profile
-import EditStack from './4. ProfileStack/EditStack';
+import ProfileStack from './4.ProfileStack/ProfileStack';
 
-import MoreStack from "./5. MoreStack/MoreStack";
-import DrawerMenu from "./DrawerMenu/DrawerMenu";
+// More for Drawer
+import MoreStack from "./5.MoreStack/MoreStack";
 
 const BottomTabs = createStackNavigator(
     {
         default: createBottomTabNavigator(
             {
                 JobAccepted: {
-                    screen: JobAcceptedStack,
+                    screen: JobListStack,
                     navigationOptions: {
                         tabBarIcon: ({ tintColor }) => (
                             <Ionicons name="ios-home" size={24} color={tintColor} />
@@ -32,7 +32,7 @@ const BottomTabs = createStackNavigator(
                     },
                 },
                 JobAvaible: {
-                    screen: JobAvailableStack,
+                    screen: SearchStack,
                     navigationOptions: {
                         tabBarIcon: ({ tintColor }) => (
                             <Ionicons name="search" size={24} color={tintColor} />
@@ -50,7 +50,7 @@ const BottomTabs = createStackNavigator(
                     },
                 },
                 Edit: {
-                    screen: EditStack,
+                    screen: ProfileStack,
                     navigationOptions: {
                         tabBarIcon: ({ tintColor }) => (
                             <AntDesign name="profile" size={24} color={tintColor} />
@@ -83,15 +83,4 @@ const BottomTabs = createStackNavigator(
     }
 );
 
-const Routes = createDrawerNavigator(
-    {
-        BottomTabs,
-    },
-    {
-        drawerPosition: "right",
-        drawerWidth: 250,
-        contentComponent: props => <DrawerMenu {...props} />
-    }
-);
-
-export default Routes
+export default BottomTabs

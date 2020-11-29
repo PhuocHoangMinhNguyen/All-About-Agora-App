@@ -4,13 +4,13 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import LoadingScreen from "./src/screens/LoadingScreen";
 import VerificationScreen from "./src/screens/VerificationScreen";
 import AuthStack from "./src/routes/AuthStack/AuthStack";
-import Routes from "./src/routes/Routes";
+import Drawer from "./src/routes/DrawerMenu/Drawer";
 
 const AppContainer = createAppContainer(
   createSwitchNavigator(
     {
       Loading: LoadingScreen,
-      App: Routes,
+      App: Drawer,
       AuthStack,
       Verify: VerificationScreen,
     },

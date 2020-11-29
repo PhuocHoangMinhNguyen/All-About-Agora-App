@@ -7,7 +7,7 @@ import Education from './EducationStack';
 import Experience from './ExperienceStack';
 import Skills from './SkillsStack';
 
-const EditScreen = createMaterialTopTabNavigator(
+const ProfileScreen = createMaterialTopTabNavigator(
     {
         Contact,
         Education,
@@ -25,19 +25,19 @@ const EditScreen = createMaterialTopTabNavigator(
     }
 );
 
-EditScreen.navigationOptions = {
+ProfileScreen.navigationOptions = {
     title: <Text style={{ color: '#FFF' }}>Your resume</Text>,
     headerStyle: { backgroundColor: '#001F4C' },
     headerTitleStyle: { color: 'white', alignSelf: 'center' },
 };
 
-const EditStack = createStackNavigator(
+const ProfileStack = createStackNavigator(
     {
-        EditScreen,
+        ProfileScreen,
     },
     {
         mode: "modal",
     }
 );
 
-export default EditStack;
+export default ProfileStack;
