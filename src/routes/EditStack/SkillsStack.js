@@ -26,7 +26,6 @@ SkillsStack.navigationOptions = {
 const styles = StyleSheet.create({
     skills: {
         color: '#FFF',
-        fontSize: 13
     },
 });
 

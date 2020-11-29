@@ -23,7 +23,6 @@ AppliedStack.navigationOptions = {
 const styles = StyleSheet.create({
     applied: {
         color: '#FFF',
-        fontSize: 13
     },
 });
 

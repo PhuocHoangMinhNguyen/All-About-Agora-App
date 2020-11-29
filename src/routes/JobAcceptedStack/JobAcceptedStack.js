@@ -10,7 +10,6 @@ const JobAcceptedStack = createStackNavigator(
     {
         initialRouteName: "JobAccepted",
         mode: "modal",
-        headerMode: "none"
     }
 );
 

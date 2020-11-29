@@ -1,9 +1,15 @@
 import React from "react";
-import { Text, StyleSheet, FlatList } from "react-native";
+import { Text, StyleSheet, FlatList, View } from "react-native";
 import firestore from "@react-native-firebase/firestore";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 class JobAccepted extends React.Component {
+    static navigationOptions = {
+        title: <Text style={{ color: '#FFF' }}>Job List</Text>,
+        headerStyle: { backgroundColor: '#001F4C' },
+        headerTitleStyle: { color: 'white' },
+    };
+
     state = {
         jobs: []
     };
@@ -28,20 +34,35 @@ class JobAccepted extends React.Component {
     };
 
     renderItem = (item) => {
+        let dataInfor = {
+
+        }
         return (
-            <TouchableOpacity onPress={() => this.props.navigation.navigate("EditExperience", dataInfor)}>
+            <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("JobDetails", dataInfor)}>
 
             </TouchableOpacity>
         )
     };
 
     render() {
-        return <Text>Job Accepted</Text>
+        const { jobs } = this.state;
+        if (jobs.length == 0) {
+            return <Text>Job Accepted</Text>
+        } else {
+            return (
+                <View style={styles.container}>
+
+                </View>
+            )
+        }
     };
 };
 
 const styles = StyleSheet.create({
-
+    container: {
+        padding: 20,
+    },
 });
 
 export default JobAccepted
