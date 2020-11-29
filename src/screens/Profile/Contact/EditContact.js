@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     header: {
         fontWeight: 'bold',
         alignSelf: 'center',
-        fontSize: 24
+        fontSize: 24,
     },
     input: {
         borderBottomColor: "#8A8F9E",
