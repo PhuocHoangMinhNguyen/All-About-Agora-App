@@ -10,7 +10,6 @@ const SavedStack = createStackNavigator(
     {
         initialRouteName: 'SavedActivity',
         mode: 'modal',
-        headerMode: "none"
     }
 );
 

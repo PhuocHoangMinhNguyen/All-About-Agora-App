@@ -1,89 +1,22 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
-import {
-    createMaterialTopTabNavigator,
-    createBottomTabNavigator
-} from "react-navigation-tabs";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createDrawerNavigator } from "react-navigation-drawer";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
+// Job List
+import JobAcceptedStack from "./1. JobAcceptedStack/JobAcceptedStack";
+import JobAvailableStack from "./2. JobAvailableStack/JobAvailableStack";
 
 // My Activity
-import AppliedStack from "./ActivityStack/AppliedStack";
-import SavedStack from './ActivityStack/SavedStack';
+import ActivityStack from "./3. ActivityStack/ActivityStack";
 
 // Profile
-import Contact from './EditStack/ContactStack';
-import Education from './EditStack/EducationStack';
-import Experience from './EditStack/ExperienceStack';
-import Skills from './EditStack/SkillsStack';
+import EditStack from './4. ProfileStack/EditStack';
 
+import MoreStack from "./5. MoreStack/MoreStack";
 import DrawerMenu from "./DrawerMenu/DrawerMenu";
-import JobAcceptedStack from "./JobAcceptedStack/JobAcceptedStack";
-import JobAvailableStack from "./JobAvailableStack/JobAvailableStack";
-import MoreStack from "./DrawerMenu/MoreStack";
-
-const ActivityScreen = createMaterialTopTabNavigator(
-    {
-        SavedStack,
-        AppliedStack
-    },
-    {
-        tabBarOptions: {
-            style: {
-                backgroundColor: '#001F4C',
-            },
-        },
-    }
-);
-
-ActivityScreen.navigationOptions = {
-    title: <Text style={{ color: '#FFF' }}>My Activity</Text>,
-    headerStyle: { backgroundColor: '#001F4C' },
-    headerTitleStyle: { color: 'white', alignSelf: 'center' },
-};
-
-const ActivityStack = createStackNavigator(
-    {
-        ActivityScreen,
-    },
-    {
-        mode: "modal",
-    }
-);
-
-const EditScreen = createMaterialTopTabNavigator(
-    {
-        Contact,
-        Education,
-        Experience,
-        Skills
-    },
-    {
-        tabBarOptions: {
-            style: {
-                backgroundColor: '#001F4C',
-            },
-        },
-    }
-);
-
-EditScreen.navigationOptions = {
-    title: <Text style={{ color: '#FFF' }}>Your resume</Text>,
-    headerStyle: { backgroundColor: '#001F4C' },
-    headerTitleStyle: { color: 'white', alignSelf: 'center' },
-};
-
-const EditStack = createStackNavigator(
-    {
-        EditScreen,
-    },
-    {
-        mode: "modal",
-    }
-);
 
 const BottomTabs = createStackNavigator(
     {
