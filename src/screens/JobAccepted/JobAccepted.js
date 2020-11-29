@@ -1,7 +1,9 @@
 import React from "react";
 import { Text, StyleSheet, FlatList, View, TouchableOpacity } from "react-native";
 import firestore from "@react-native-firebase/firestore";
+import auth from '@react-native-firebase/auth';
 import moment from 'moment';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class JobAccepted extends React.Component {
     static navigationOptions = {
@@ -17,20 +19,43 @@ class JobAccepted extends React.Component {
     unsubscribe = null;
 
     componentDidMount() {
-        this.unsubscribe = firestore().collection("jobs").onSnapshot(querySnapshot => {
-            let temp = [];
-            querySnapshot.forEach(documentSnapshot => {
-                temp.push({
-                    ...documentSnapshot.data(),
-                    key: documentSnapshot.id
+        this.unsubscribe = firestore().collection("jobs")
+            .where('status', '==', 'published')
+            .onSnapshot(querySnapshot => {
+                let temp = [];
+                querySnapshot.forEach(documentSnapshot => {
+                    if (documentSnapshot.data().saved.includes((auth().currentUser || {}).uid)) {
+                        temp.push({
+                            ...documentSnapshot.data(),
+                            key: documentSnapshot.id,
+                            saved: true
+                        });
+                    } else {
+                        temp.push({
+                            ...documentSnapshot.data(),
+                            key: documentSnapshot.id,
+                            saved: false
+                        });
+                    }
                 });
+                this.setState({ jobs: temp });
             });
-            this.setState({ jobs: temp });
-        });
     };
 
     componentWillUnmount() {
         this.unsubscribe();
+    };
+
+    handleSave(item) {
+        if (item.saved == true) {
+            firestore().collection('jobs').doc(item.key).update({
+                saved: firestore.FieldValue.arrayRemove((auth().currentUser || {}).uid)
+            });
+        } else {
+            firestore().collection('jobs').doc(item.key).update({
+                saved: firestore.FieldValue.arrayUnion((auth().currentUser || {}).uid)
+            });
+        }
     };
 
     renderItem = (item) => {
@@ -41,7 +66,15 @@ class JobAccepted extends React.Component {
         return (
             <TouchableOpacity style={styles.item}
                 onPress={() => this.props.navigation.navigate("JobDetails", dataInfor)}>
-                <Text style={styles.title}>{item.jobTitle}</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={styles.title}>{item.jobTitle}</Text>
+                    <TouchableOpacity onPress={() => this.handleSave(item)}>
+                        {item.saved == true
+                            ? <Ionicons name="star" size={30} />
+                            : <Ionicons name="star-outline" size={30} />
+                        }
+                    </TouchableOpacity>
+                </View>
                 <Text>{item.businessName}</Text>
                 <Text style={styles.createdAt}>{moment(item.createdAt.toDate()).fromNow()}</Text>
                 <Text style={styles.workType}>{item.workType}</Text>
