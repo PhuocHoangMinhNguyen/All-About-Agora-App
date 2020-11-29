@@ -3,7 +3,7 @@ import { Text, StyleSheet } from "react-native";
 
 class Search extends React.Component {
     render() {
-        return <Text>Job Available</Text>
+        return <Text>Search</Text>
     };
 };
 
