@@ -10,6 +10,7 @@ const SkillsStack = createStackNavigator(
         EditSkills
     },
     {
+        initialRouteName: 'Skills',
         mode: "modal",
         headerMode: "none",
     }

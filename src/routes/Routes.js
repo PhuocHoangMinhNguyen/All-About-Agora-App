@@ -9,6 +9,11 @@ import { createDrawerNavigator } from "react-navigation-drawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
+// My Activity
+import AppliedStack from "./ActivityStack/AppliedStack";
+import SavedStack from './ActivityStack/SavedStack';
+
+// Profile
 import Contact from './EditStack/ContactStack';
 import Education from './EditStack/EducationStack';
 import Experience from './EditStack/ExperienceStack';
@@ -17,8 +22,31 @@ import Skills from './EditStack/SkillsStack';
 import DrawerMenu from "./DrawerMenu/DrawerMenu";
 import JobAcceptedStack from "./JobAcceptedStack/JobAcceptedStack";
 import JobAvailableStack from "./JobAvailableStack/JobAvailableStack";
-import CreateReviewStack from "./CreateReviewStack/CreateReviewStack";
 import MoreStack from "./DrawerMenu/MoreStack";
+
+const ActivityScreen = createMaterialTopTabNavigator(
+    {
+        SavedStack,
+        AppliedStack
+    },
+    {
+        tabBarOptions: {
+            style: {
+                backgroundColor: '#001F4C',
+            },
+        },
+    }
+);
+
+const ActivityStack = createStackNavigator(
+    {
+        ActivityScreen,
+    },
+    {
+        mode: "modal",
+        headerMode: "none",
+    }
+);
 
 const EditScreen = createMaterialTopTabNavigator(
     {
@@ -68,11 +96,11 @@ const BottomTabs = createStackNavigator(
                         tabBarOnPress: ({ defaultHandler }) => defaultHandler()
                     },
                 },
-                CreateReview: {
-                    screen: CreateReviewStack,
+                Activity: {
+                    screen: ActivityStack,
                     navigationOptions: {
                         tabBarIcon: ({ tintColor }) => (
-                            <AntDesign name="edit" size={24} color={tintColor} />
+                            <Ionicons name="star" size={24} color={tintColor} />
                         ),
                         tabBarOnPress: ({ defaultHandler }) => defaultHandler()
                     },

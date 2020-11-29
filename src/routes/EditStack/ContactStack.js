@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native'
+import { Text, StyleSheet } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import Contact from "../../screens/Profile/Contact/Contact";
 import EditContact from "../../screens/Profile/Contact/EditContact";
@@ -10,6 +10,7 @@ const ContactStack = createStackNavigator(
         EditContact
     },
     {
+        initialRouteName: 'Contact',
         mode: "modal",
         headerMode: "none",
     }

@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
 
-class CreateReview extends React.Component {
+class AppliedActivity extends React.Component {
     render() {
-        return <Text>Create Review</Text>
+        return <Text>Applied Activity</Text>
     };
 };
 
@@ -11,4 +11,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default CreateReview
+export default AppliedActivity
