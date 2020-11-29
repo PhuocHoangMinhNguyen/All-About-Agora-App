@@ -34,9 +34,13 @@ class JobAccepted extends React.Component {
     };
 
     renderItem = (item) => {
+        let dataInfor = {
+            ...item,
+            createAt: item.createdAt.toDate()
+        }
         return (
             <TouchableOpacity style={styles.item}
-                onPress={() => this.props.navigation.navigate("JobDetails", item)}>
+                onPress={() => this.props.navigation.navigate("JobDetails", dataInfor)}>
                 <Text style={styles.title}>{item.jobTitle}</Text>
                 <Text>{item.businessName}</Text>
                 <Text style={styles.createdAt}>{moment(item.createdAt.toDate()).fromNow()}</Text>
