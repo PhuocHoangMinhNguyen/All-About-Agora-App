@@ -23,7 +23,6 @@ SavedStack.navigationOptions = {
 const styles = StyleSheet.create({
     saved: {
         color: '#FFF',
-        fontSize: 13
     },
 });
 

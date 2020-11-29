@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import {
     createMaterialTopTabNavigator,
@@ -38,13 +39,18 @@ const ActivityScreen = createMaterialTopTabNavigator(
     }
 );
 
+ActivityScreen.navigationOptions = {
+    title: <Text style={{ color: '#FFF' }}>My Activity</Text>,
+    headerStyle: { backgroundColor: '#001F4C' },
+    headerTitleStyle: { color: 'white', alignSelf: 'center' },
+};
+
 const ActivityStack = createStackNavigator(
     {
         ActivityScreen,
     },
     {
         mode: "modal",
-        headerMode: "none",
     }
 );
 
@@ -64,13 +70,18 @@ const EditScreen = createMaterialTopTabNavigator(
     }
 );
 
+EditScreen.navigationOptions = {
+    title: <Text style={{ color: '#FFF' }}>Your resume</Text>,
+    headerStyle: { backgroundColor: '#001F4C' },
+    headerTitleStyle: { color: 'white', alignSelf: 'center' },
+};
+
 const EditStack = createStackNavigator(
     {
         EditScreen,
     },
     {
         mode: "modal",
-        headerMode: "none",
     }
 );
 
