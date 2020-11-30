@@ -4,7 +4,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 import Apply1 from '../screens/Apply/Apply1';
 import Apply2 from '../screens/Apply/Apply2';
-import SavedJobDetails from '../screens/3.Activity/SavedJobDetails';
+import SavedJobDetails from '../screens/Apply/AppliedJob';
 
 const ApplyStep = createStackNavigator(
     {
