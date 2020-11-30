@@ -1,16 +1,16 @@
 import { createStackNavigator } from "react-navigation-stack";
-import JobAccepted from "../../screens/1.JobList/JobList";
+import JobList from "../../screens/1.JobList/JobList";
 import JobDetails from '../../screens/1.JobList/JobDetails';
 import ApplyStack from '../ApplyStack';
 
 const JobListStack = createStackNavigator(
     {
-        JobAccepted,
+        JobList,
         JobDetails,
         ApplyStack
     },
     {
-        initialRouteName: "JobAccepted",
+        initialRouteName: "JobList",
         mode: "modal",
     }
 );

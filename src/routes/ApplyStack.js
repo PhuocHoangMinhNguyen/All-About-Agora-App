@@ -48,7 +48,7 @@ const ApplyStack = createMaterialTopTabNavigator(
 );
 
 ApplyStack.navigationOptions = {
-    title: <Text style={{ color: '#FFF' }}>Application Steps</Text>,
+    title: <Text style={{ color: 'white' }}>Application Steps</Text>,
     headerStyle: { backgroundColor: '#001F4C' },
     headerTitleStyle: { color: 'white' },
     headerTintColor: 'white'
