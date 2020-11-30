@@ -20,7 +20,7 @@ class Apply1 extends React.Component {
     };
 
     render() {
-        console.log(this.state.job)
+        console.log("Apply 1: " + this.state.job);
         return (
             <View style={styles.container}>
                 <ScrollView>

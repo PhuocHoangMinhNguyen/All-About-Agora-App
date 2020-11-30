@@ -56,7 +56,7 @@ ApplyStack.navigationOptions = {
 
 const styles = StyleSheet.create({
     label: {
-        color: '#FFF',
+        color: 'white',
     },
 });
 

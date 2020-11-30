@@ -3,13 +3,6 @@ import { Text, StyleSheet, View, ScrollView } from 'react-native';
 import moment from 'moment';
 
 class AppliedJob extends React.Component {
-    static navigationOptions = {
-        title: <Text style={{ color: '#FFF' }}>Job Details</Text>,
-        headerStyle: { backgroundColor: '#001F4C' },
-        headerTitleStyle: { color: 'white' },
-        headerTintColor: 'white'
-    };
-
     state = {
         job: {},
     };
