@@ -104,6 +104,7 @@ class JobList extends React.Component {
 const styles = StyleSheet.create({
     container: {
         padding: 20,
+        backgroundColor: 'white'
     },
     list: {
         // marginVertical: 10

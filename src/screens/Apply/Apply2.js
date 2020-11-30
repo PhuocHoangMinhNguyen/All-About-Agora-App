@@ -22,7 +22,8 @@ class Apply2 extends React.Component {
 const styles = StyleSheet.create({
     container: {
         padding: 20,
-        flex: 1
+        flex: 1,
+        backgroundColor: 'white'
     },
     bottom: {
         flexDirection: 'row',
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
         borderColor: "#001F4C",
         borderWidth: 1,
         borderRadius: 10,
-        marginHorizontal: 10
+        marginRight: 10
     },
     continue: {
         alignItems: "center",
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#001F4C",
         borderRadius: 10,
-        marginHorizontal: 10,
+        marginLeft: 10,
     }
 });
 

@@ -1,14 +1,20 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 class Search extends React.Component {
     render() {
-        return <Text>Search</Text>
+        return (
+            <View style={styles.container}>
+                <Text>Search</Text>
+            </View>
+        )
     };
 };
 
 const styles = StyleSheet.create({
-
+    container: {
+        backgroundColor: 'white'
+    }
 });
 
 export default Search

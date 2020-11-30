@@ -126,6 +126,7 @@ class Education extends React.Component {
 const styles = StyleSheet.create({
     container: {
         padding: 20,
+        backgroundColor: 'white'
     },
     header: {
         fontWeight: 'bold',

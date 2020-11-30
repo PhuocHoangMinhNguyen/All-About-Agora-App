@@ -40,7 +40,8 @@ class Apply1 extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20
+        padding: 20,
+        backgroundColor: 'white'
     },
     title: {
         fontSize: 18,

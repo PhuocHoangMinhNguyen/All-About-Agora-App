@@ -96,7 +96,7 @@ class EditSkills extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#FFF"
+        backgroundColor: 'white'
     },
     icons: {
         padding: 20,

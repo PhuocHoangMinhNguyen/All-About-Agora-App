@@ -3,12 +3,18 @@ import { Text, StyleSheet } from "react-native";
 
 class AppliedActivity extends React.Component {
     render() {
-        return <Text>Applied Activity</Text>
+        return (
+            <View style={styles.container}>
+                <Text>Applied Activity</Text>
+            </View>
+        )
     };
 };
 
 const styles = StyleSheet.create({
-
+    container: {
+        backgroundColor: 'white'
+    }
 });
 
 export default AppliedActivity

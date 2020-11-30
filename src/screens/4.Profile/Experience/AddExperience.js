@@ -163,7 +163,7 @@ class AddExperience extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#FFF"
+        backgroundColor: 'white'
     },
     layout: {
         marginHorizontal: 20,
