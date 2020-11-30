@@ -1,11 +1,42 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 class Apply2 extends React.Component {
+    state = {
+        job: {}
+    };
+
+    componentDidMount() {
+        let params = this.props.navigation.state.params
+        this.setState({ job: params });
+    };
+
     render() {
+        const { job } = this.state
         return (
             <View style={styles.container}>
-                <ScrollView></ScrollView>
+                <ScrollView>
+                    <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
+                        Your SEEK Profile is sent with your application
+                    </Text>
+                    <Text>
+                        {`In addition to the information in this application,
+                        ${job.businessName}`}
+                    </Text>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Entypo name='dot-single' size={20} />
+                        <Text>Career history</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Entypo name='dot-single' size={20} />
+                        <Text>Education</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Entypo name='dot-single' size={20} />
+                        <Text>Skills</Text>
+                    </View>
+                </ScrollView>
                 <View style={styles.bottom}>
                     <TouchableOpacity style={styles.back} onPress={() => this.props.navigation.goBack()}>
                         <Text style={{ color: "#001F4C" }}>Back</Text>

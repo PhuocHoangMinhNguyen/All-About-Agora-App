@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 class AppliedActivity extends React.Component {
     render() {
@@ -13,6 +13,7 @@ class AppliedActivity extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         backgroundColor: 'white'
     }
 });
