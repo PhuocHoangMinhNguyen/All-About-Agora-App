@@ -32,6 +32,18 @@ class SavedActivity extends React.Component {
         this.unsubscribe();
     };
 
+    handleSave(item) {
+        if (item.saved == true) {
+            firestore().collection('jobs').doc(item.key).update({
+                saved: firestore.FieldValue.arrayRemove((auth().currentUser || {}).uid)
+            });
+        } else {
+            firestore().collection('jobs').doc(item.key).update({
+                saved: firestore.FieldValue.arrayUnion((auth().currentUser || {}).uid)
+            });
+        }
+    };
+
     renderItem = (item) => {
         let dataInfor = {
             ...item,
@@ -60,7 +72,11 @@ class SavedActivity extends React.Component {
     render() {
         const { savedJobs } = this.state
         if (savedJobs.length == 0) {
-            return <Text>Saved Activity</Text>
+            return (
+                <View style={styles.container}>
+                    <Text>Saved Activity</Text>
+                </View>
+            )
         } else {
             return (
                 <View style={styles.container}>
@@ -68,7 +84,8 @@ class SavedActivity extends React.Component {
                         data={savedJobs}
                         renderItem={({ item }) => this.renderItem(item)}
                         keyExtractor={(item, index) => index.toString()} />
-                </View>)
+                </View>
+            )
         }
     };
 };

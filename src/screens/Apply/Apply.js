@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import CheckBox from '@react-native-community/checkbox';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import moment from 'moment';
+import Toast from 'react-native-simple-toast';
 
 class Apply extends React.Component {
     state = {
@@ -66,18 +66,19 @@ class Apply extends React.Component {
     };
 
     handleApply = () => {
-
+        const { job, resume, coverLetter } = this.state;
+        firestore().collection('jobs').doc(job.key).update({
+            applied: firestore.FieldValue.arrayUnion((auth().currentUser || {}).uid)
+        }).then(() => {
+            this.props.navigation.goBack();
+            Toast.show('Application Submitted');
+        });
     };
 
     renderRoles = (item) => {
         return (
             <View style={styles.item}>
-                <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 15 }}>{item.job}</Text>
-                    <TouchableOpacity onPress={() => this.deleteItem(item)}>
-                        <Ionicons name="close" size={20} />
-                    </TouchableOpacity>
-                </View>
+                <Text style={{ fontWeight: 'bold', fontSize: 15 }}>{item.job}</Text>
                 <Text>{item.company}</Text>
                 <View style={{ flexDirection: "row", marginTop: 10 }}>
                     <Text>{`${moment(item.startDate.toDate()).format('MMM Do YYYY')} - `}</Text>
@@ -93,12 +94,7 @@ class Apply extends React.Component {
     renderQualifications = (item) => {
         return (
             <View style={styles.item}>
-                <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 15 }}>{item.course}</Text>
-                    <TouchableOpacity onPress={() => this.deleteItem(item)}>
-                        <Ionicons name="close" size={20} />
-                    </TouchableOpacity>
-                </View>
+                <Text style={{ fontWeight: 'bold', fontSize: 15 }}>{item.course}</Text>
                 <Text>{item.institution}</Text>
                 <View style={{ flexDirection: "row", marginTop: 10 }}>
                     {(item.complete == true)
@@ -127,7 +123,7 @@ class Apply extends React.Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <Text style={styles.title}>Documents for this application</Text>
+                    {/* <Text style={styles.title}>Documents for this application</Text>
                     <Text style={styles.intro}>{`You can choose to add a cover letter and a resume to your application.`}</Text>
                     <View style={styles.header}>
                         <Text style={styles.resume}>Resume</Text>
@@ -138,8 +134,8 @@ class Apply extends React.Component {
                         <CheckBox value={coverLetter}
                             onValueChange={newValue => this.setState({ coverLetter: newValue })}
                         />
-                    </View>
-                    <Text style={[styles.title, { marginTop: 40 }]}>
+                    </View> */}
+                    <Text style={styles.title}>
                         Your SEEK Profile is sent with your application
                     </Text>
                     <Text>
@@ -160,11 +156,11 @@ class Apply extends React.Component {
                     <Text style={[styles.title, { marginTop: 40 }]}>Career history</Text>
                     <FlatList style={styles.list} data={roles}
                         renderItem={({ item }) => this.renderRoles(item)}
-                        keyExtractor={(item, index) => index.toString()} />
+                        keyExtractor={item => item.key} />
                     <Text style={[styles.title, { marginTop: 40 }]}>Education</Text>
                     <FlatList style={styles.list} data={qualifications}
                         renderItem={({ item }) => this.renderQualifications(item)}
-                        keyExtractor={(item, index) => index.toString()} />
+                        keyExtractor={item => item.key} />
                     <Text style={[styles.title, { marginTop: 40 }]}>Skills</Text>
                     <FlatList style={styles.list2} data={skills}
                         renderItem={({ item }) => this.renderSkills(item)}
@@ -205,7 +201,7 @@ const styles = StyleSheet.create({
         color: 'blue'
     },
     list: {
-        marginVertical: 10
+
     },
     item: {
         backgroundColor: "#c2f1ff",
@@ -213,7 +209,8 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     list2: {
-        padding: 20,
+        marginHorizontal: 10,
+        marginBottom: 40
     },
     item2: {
         minWidth: 100,

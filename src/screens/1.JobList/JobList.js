@@ -87,7 +87,11 @@ class JobList extends React.Component {
     render() {
         const { jobs } = this.state;
         if (jobs.length == 0) {
-            return <Text>Job Accepted</Text>
+            return (
+                <View style={styles.container}>
+                    <Text>Job Accepted</Text>
+                </View>
+            )
         } else {
             return (
                 <View style={styles.container}>
