@@ -15,10 +15,9 @@ class JobDetails extends React.Component {
 
     state = {
         job: {},
-        saved: false
     };
 
-    componentDidMount = async () => {
+    componentDidMount() {
         let params = this.props.navigation.state.params
         this.setState({ job: params });
     };

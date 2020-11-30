@@ -1,9 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet, View, ScrollView } from 'react-native';
-import firestore from '@react-native-firebase/firestore';
-import auth from '@react-native-firebase/auth';
 import moment from 'moment';
-import Toast from 'react-native-simple-toast';
 
 class AppliedJob extends React.Component {
     static navigationOptions = {
@@ -15,35 +12,11 @@ class AppliedJob extends React.Component {
 
     state = {
         job: {},
-        saved: false
     };
 
-    componentDidMount = async () => {
+    componentDidMount() {
         let params = this.props.navigation.state.params
         this.setState({ job: params });
-    };
-
-    handleSaveJob = () => {
-        const { job } = this.state
-        if (job.saved == false) {
-            firestore().collection("jobs").doc(job.key).update({
-                saved: firestore.FieldValue.arrayUnion((auth().currentUser || {}).uid)
-            }).then(() => {
-                this.setState({ job: { ...this.state.job, saved: true } });
-                Toast.show('Job saved to My Activity');
-            })
-        } else {
-            firestore().collection("jobs").doc(job.key).update({
-                saved: firestore.FieldValue.arrayRemove((auth().currentUser || {}).uid)
-            }).then(() => {
-                this.setState({ job: { ...this.state.job, saved: false } });
-                Toast.show('Job no longer saved');
-            })
-        }
-    };
-
-    handleApply = () => {
-        this.props.navigation.navigate("SavedApplyStack", this.state.job);
     };
 
     render() {

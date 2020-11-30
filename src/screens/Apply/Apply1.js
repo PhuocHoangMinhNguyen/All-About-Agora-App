@@ -2,6 +2,15 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
 class Apply1 extends React.Component {
+    state = {
+        job: {}
+    };
+
+    componentDidMount() {
+        let params = this.props.navigation.state.params
+        this.setState({ job: params });
+    };
+
     handleUploadResume = () => {
 
     };
@@ -11,6 +20,7 @@ class Apply1 extends React.Component {
     };
 
     render() {
+        console.log(this.state.job)
         return (
             <View style={styles.container}>
                 <ScrollView>
@@ -29,7 +39,7 @@ class Apply1 extends React.Component {
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
-                <TouchableOpacity style={styles.continue} onPress={() => this.props.navigation.navigate("Apply2")}>
+                <TouchableOpacity style={styles.continue} onPress={() => this.props.navigation.navigate("Apply2", this.state.job)}>
                     <Text style={{ color: 'white' }}>Continue</Text>
                 </TouchableOpacity>
             </View>
