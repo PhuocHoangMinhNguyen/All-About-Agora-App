@@ -1,25 +1,10 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
-import { createStackNavigator } from "react-navigation-stack";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
-import Apply1 from '../screens/Apply/Apply1';
-import Apply2 from '../screens/Apply/Apply2';
-import Apply3 from '../screens/Apply/Apply3';
+import Apply from '../screens/Apply/Apply';
 import SavedJobDetails from '../screens/Apply/AppliedJob';
 
-const ApplyStep = createStackNavigator(
-    {
-        Apply1,
-        Apply2,
-        Apply3,
-    },
-    {
-        initialRouteName: 'Apply1',
-        mode: 'modal',
-    }
-);
-
-ApplyStep.navigationOptions = {
+Apply.navigationOptions = {
     tabBarLabel: ({ }) => (
         <Text style={styles.label}>Application</Text>
     )
@@ -33,11 +18,11 @@ SavedJobDetails.navigationOptions = {
 
 const ApplyStack = createMaterialTopTabNavigator(
     {
-        ApplyStep,
+        Apply,
         SavedJobDetails
     },
     {
-        initialRouteName: 'ApplyStep',
+        initialRouteName: 'Apply',
         mode: 'modal',
         tabBarOptions: {
             style: {
