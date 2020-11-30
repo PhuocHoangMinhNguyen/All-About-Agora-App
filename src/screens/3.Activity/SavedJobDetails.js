@@ -5,7 +5,7 @@ import auth from '@react-native-firebase/auth';
 import moment from 'moment';
 import Toast from 'react-native-simple-toast';
 
-class JobDetails extends React.Component {
+class SavedJobDetails extends React.Component {
     static navigationOptions = {
         title: <Text style={{ color: '#FFF' }}>Job Details</Text>,
         headerStyle: { backgroundColor: '#001F4C' },
@@ -43,7 +43,7 @@ class JobDetails extends React.Component {
     };
 
     handleApply = () => {
-        this.props.navigation.navigate("ApplyStack", this.state.job);
+        this.props.navigation.navigate("SavedApplyStack", this.state.job);
     };
 
     render() {
@@ -184,4 +184,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default JobDetails;
+export default SavedJobDetails;

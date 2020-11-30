@@ -4,8 +4,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 import AppliedStack from "./AppliedStack";
 import SavedStack from './SavedStack';
-import SavedJobDetails from '../../screens/1.JobList/JobDetails';
-import ApplyScreen1 from '../../screens/1.JobList/Apply/Apply1';
+import SavedJobDetails from '../../screens/3.Activity/SavedJobDetails';
+import SavedApplyStack from '../ApplyStack';
 
 const ActivityScreen = createMaterialTopTabNavigator(
     {
@@ -33,7 +33,7 @@ const ActivityStack = createStackNavigator(
     {
         ActivityScreen,
         SavedJobDetails,
-        ApplyScreen1
+        SavedApplyStack
     },
     {
         initialRouteName: 'ActivityScreen',
