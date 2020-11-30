@@ -18,7 +18,7 @@ class SavedJobDetails extends React.Component {
         saved: false
     };
 
-    componentDidMount = async () => {
+    componentDidMount() {
         let params = this.props.navigation.state.params
         this.setState({ job: params });
     };
@@ -42,9 +42,7 @@ class SavedJobDetails extends React.Component {
         }
     };
 
-    handleApply = () => {
-        this.props.navigation.navigate("SavedApplyStack", this.state.job);
-    };
+    handleApply = () => this.props.navigation.navigate("SavedApplyStack", this.state.job);
 
     render() {
         const { job } = this.state

@@ -7,7 +7,7 @@ import Toast from 'react-native-simple-toast';
 
 class JobDetails extends React.Component {
     static navigationOptions = {
-        title: <Text style={{ color: '#FFF' }}>Job Details</Text>,
+        title: <Text style={{ color: 'white' }}>Job Details</Text>,
         headerStyle: { backgroundColor: '#001F4C' },
         headerTitleStyle: { color: 'white' },
         headerTintColor: 'white'
@@ -41,9 +41,7 @@ class JobDetails extends React.Component {
         }
     };
 
-    handleApply = () => {
-        this.props.navigation.navigate("ApplyStack", this.state.job);
-    };
+    handleApply = () => this.props.navigation.navigate("ApplyStack", this.state.job);
 
     render() {
         const { job } = this.state
