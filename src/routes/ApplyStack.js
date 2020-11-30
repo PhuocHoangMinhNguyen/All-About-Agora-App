@@ -4,12 +4,14 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 import Apply1 from '../screens/Apply/Apply1';
 import Apply2 from '../screens/Apply/Apply2';
+import Apply3 from '../screens/Apply/Apply3';
 import SavedJobDetails from '../screens/Apply/AppliedJob';
 
 const ApplyStep = createStackNavigator(
     {
         Apply1,
-        Apply2
+        Apply2,
+        Apply3,
     },
     {
         initialRouteName: 'Apply1',
