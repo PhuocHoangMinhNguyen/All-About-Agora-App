@@ -11,9 +11,7 @@ class ProfileScreen extends React.Component {
   unsubscribe = null
 
   componentDidMount() {
-    const user = this.props.uid || (auth().currentUser || {}).uid
-
-    this.unsubscribe = firestore().collection("users").doc(user)
+    this.unsubscribe = firestore().collection("contact").doc((auth().currentUser || {}).uid)
       .onSnapshot(doc => {
         this.setState({ user: doc.data() });
       });
@@ -35,8 +33,10 @@ class ProfileScreen extends React.Component {
     } else {
       return (
         <View style={{ marginTop: 30, marginHorizontal: 20 }}>
-          <Text style={styles.name}>{user.name}</Text>
-          <Text style={styles.email}>{auth().currentUser.email}</Text>
+          <Text style={styles.name}>{`${user.firstName} ${user.lastName}`}</Text>
+          <Text style={styles.email}>{`Email: ${auth().currentUser.email}`}</Text>
+          <Text style={styles.location}>{`Address: ${user.homeLocation}`}</Text>
+          <Text style={styles.phoneNumber}>{`Phone: ${user.phoneNumber}`}</Text>
         </View>
       );
     };
@@ -51,16 +51,29 @@ const styles = StyleSheet.create({
   },
   name: {
     marginTop: 10,
+    marginBottom: 5,
     fontSize: 16,
     fontWeight: "600",
-    color: "white"
+    color: "white",
   },
   email: {
     fontSize: 12,
     fontWeight: "600",
-    marginBottom: 15,
+    marginBottom: 5,
     color: "white"
   },
+  location: {
+    fontSize: 12,
+    fontWeight: "600",
+    marginBottom: 5,
+    color: "white"
+  },
+  phoneNumber: {
+    fontSize: 12,
+    fontWeight: "600",
+    marginBottom: 15,
+    color: "white"
+  }
 });
 
 export default ProfileScreen
