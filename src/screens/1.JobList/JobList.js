@@ -6,11 +6,19 @@ import moment from 'moment';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class JobList extends React.Component {
-    static navigationOptions = {
-        title: <Text style={{ color: '#FFF' }}>Job List</Text>,
-        headerStyle: { backgroundColor: '#001F4C' },
+    static navigationOptions = ({ navigation }) => ({
+        title: (
+            <View>
+                <Text style={{ color: 'white', fontSize: 20, marginBottom: 5 }}>Job List</Text>
+                <TouchableOpacity style={styles.headerHeight} onPress={() => navigation.navigate("Search")}>
+                    <Text>Start your job search</Text>
+                    <Ionicons name="search" size={24} />
+                </TouchableOpacity>
+            </View>
+        ),
+        headerStyle: { backgroundColor: '#001F4C', height: 120 },
         headerTitleStyle: { color: 'white' },
-    };
+    });
 
     state = {
         jobs: []
@@ -154,7 +162,17 @@ const styles = StyleSheet.create({
     location: {
         fontWeight: 'bold',
         marginBottom: 10
-    }
+    },
+    headerHeight: {
+        backgroundColor: 'white',
+        height: 50,
+        borderRadius: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 10,
+        width: 300
+    },
 });
 
 export default JobList

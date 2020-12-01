@@ -10,11 +10,15 @@ class Search extends React.Component {
     };
 
     handleClearAll = () => {
-
+        this.setState({
+            keywords: '',
+            location: '',
+            moreOptions: false,
+        });
     };
 
     handleSubmit = () => {
-        console.log(this.state);
+        this.props.navigation.navigate("JobList", this.state);
     };
 
     render() {
