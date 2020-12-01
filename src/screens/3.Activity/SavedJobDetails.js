@@ -4,6 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import moment from 'moment';
 import Toast from 'react-native-simple-toast';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class SavedJobDetails extends React.Component {
     static navigationOptions = {
@@ -87,7 +88,10 @@ class SavedJobDetails extends React.Component {
                         ? <TouchableOpacity style={styles.apply} onPress={this.handleApply}>
                             <Text style={{ color: 'white' }}>Quick apply</Text>
                         </TouchableOpacity>
-                        : <Text>Hello</Text>
+                        : <View style={styles.applied}>
+                            <Ionicons name='checkmark-circle-outline' size={20} color='green' />
+                            <Text>  Applied</Text>
+                        </View>
                     }
                 </View>
             </View>
@@ -180,6 +184,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#FF0046",
         borderRadius: 10,
+        marginHorizontal: 10,
+    },
+    applied: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: "center",
+        flex: 1,
         marginHorizontal: 10,
     }
 });
