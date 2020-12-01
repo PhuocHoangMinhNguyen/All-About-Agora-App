@@ -17,11 +17,21 @@ class SavedActivity extends React.Component {
             let temp = [];
             querySnapshot.forEach(documentSnapshot => {
                 if (documentSnapshot.data().saved.includes((auth().currentUser || {}).uid)) {
-                    temp.push({
-                        ...documentSnapshot.data(),
-                        key: documentSnapshot.id,
-                        saved: true
-                    });
+                    if (documentSnapshot.data().applied.includes((auth().currentUser || {}).uid)) {
+                        temp.push({
+                            ...documentSnapshot.data(),
+                            key: documentSnapshot.id,
+                            saved: true,
+                            applied: true
+                        });
+                    } else {
+                        temp.push({
+                            ...documentSnapshot.data(),
+                            key: documentSnapshot.id,
+                            saved: true,
+                            applied: false
+                        });
+                    }
                 }
             });
             this.setState({ savedJobs: temp });

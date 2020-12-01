@@ -15,7 +15,6 @@ class SavedJobDetails extends React.Component {
 
     state = {
         job: {},
-        saved: false
     };
 
     componentDidMount() {
@@ -84,9 +83,12 @@ class SavedJobDetails extends React.Component {
                             : <Text style={{ color: "#001F4C" }}>Unsave job</Text>
                         }
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.apply} onPress={this.handleApply}>
-                        <Text style={{ color: 'white' }}>Quick apply</Text>
-                    </TouchableOpacity>
+                    {job.applied == false
+                        ? <TouchableOpacity style={styles.apply} onPress={this.handleApply}>
+                            <Text style={{ color: 'white' }}>Quick apply</Text>
+                        </TouchableOpacity>
+                        : <Text>Hello</Text>
+                    }
                 </View>
             </View>
         )

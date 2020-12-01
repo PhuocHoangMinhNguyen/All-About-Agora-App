@@ -25,17 +25,37 @@ class JobList extends React.Component {
                 let temp = [];
                 querySnapshot.forEach(documentSnapshot => {
                     if (documentSnapshot.data().saved.includes((auth().currentUser || {}).uid)) {
-                        temp.push({
-                            ...documentSnapshot.data(),
-                            key: documentSnapshot.id,
-                            saved: true
-                        });
+                        if (documentSnapshot.data().applied.includes((auth().currentUser || {}).uid)) {
+                            temp.push({
+                                ...documentSnapshot.data(),
+                                key: documentSnapshot.id,
+                                saved: true,
+                                applied: true
+                            });
+                        } else {
+                            temp.push({
+                                ...documentSnapshot.data(),
+                                key: documentSnapshot.id,
+                                saved: true,
+                                applied: false
+                            });
+                        }
                     } else {
-                        temp.push({
-                            ...documentSnapshot.data(),
-                            key: documentSnapshot.id,
-                            saved: false
-                        });
+                        if (documentSnapshot.data().applied.includes((auth().currentUser || {}).uid)) {
+                            temp.push({
+                                ...documentSnapshot.data(),
+                                key: documentSnapshot.id,
+                                saved: false,
+                                applied: true
+                            });
+                        } else {
+                            temp.push({
+                                ...documentSnapshot.data(),
+                                key: documentSnapshot.id,
+                                saved: false,
+                                applied: false
+                            });
+                        }
                     }
                 });
                 this.setState({ jobs: temp });

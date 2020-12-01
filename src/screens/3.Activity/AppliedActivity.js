@@ -21,13 +21,15 @@ class AppliedActivity extends React.Component {
                         temp.push({
                             ...documentSnapshot.data(),
                             key: documentSnapshot.id,
-                            saved: true
+                            saved: true,
+                            applied: true
                         });
                     } else {
                         temp.push({
                             ...documentSnapshot.data(),
                             key: documentSnapshot.id,
-                            saved: false
+                            saved: false,
+                            applied: true
                         });
                     }
                 }
