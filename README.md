@@ -12,39 +12,55 @@ In your `package.json`
 ```xml
     .....
     "dependencies": {
-    "@react-native-community/checkbox": "^0.5.6",
-    "@react-native-community/datetimepicker": "^3.0.5",
-    "@react-native-community/masked-view": "^0.1.10",
-    "@react-native-firebase/app": "^10.0.0",
-    "@react-native-firebase/auth": "^10.0.0",
-    "@react-native-firebase/firestore": "^10.0.0",
-    "@react-native-firebase/storage": "^10.0.0",
-    "expo": "^39.0.4",
-    "expo-permissions": "^9.3.0",
-    "moment": "^2.29.1",
-    "react": "^17.0.1",
-    "react-native": "0.63.3",
-    "react-native-gesture-handler": "^1.8.0",
-    "react-native-reanimated": "^1.13.2",
-    "react-native-safe-area-context": "^3.1.9",
-    "react-native-screens": "^2.15.0",
-    "react-native-simple-dialogs": "^1.4.0",
-    "react-native-simple-toast": "^1.1.3",
-    "react-native-vector-icons": "^7.1.0",
-    "react-navigation": "^4.4.3",
-    "react-navigation-drawer": "^2.6.0",
-    "react-navigation-stack": "^2.10.1",
-    "react-navigation-tabs": "^2.10.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/runtime": "^7.8.4",
-    "@react-native-community/eslint-config": "^2.0.0",
-    "babel-jest": "^26.6.3",
-    "eslint": "^7.13.0",
-    "jest": "^26.6.3",
-    "metro-react-native-babel-preset": "^0.64.0",
-    "react-test-renderer": "^17.0.1"
-  },
+        "@react-native-community/checkbox": "^0.5.6",
+        "@react-native-community/datetimepicker": "^3.0.5",
+        "@react-native-community/masked-view": "^0.1.10",
+        "@react-native-firebase/app": "^10.0.0",
+        "@react-native-firebase/auth": "^10.0.0",
+        "@react-native-firebase/firestore": "^10.0.0",
+        "@react-native-firebase/storage": "^10.0.0",
+        "expo": "^39.0.4",
+        "expo-permissions": "^9.3.0",
+        "moment": "^2.29.1",
+        "react": "^17.0.1",
+        "react-native": "0.63.3",
+        "react-native-gesture-handler": "^1.8.0",
+        "react-native-reanimated": "^1.13.2",
+        "react-native-safe-area-context": "^3.1.9",
+        "react-native-screens": "^2.15.0",
+        "react-native-simple-dialogs": "^1.4.0",
+        "react-native-simple-toast": "^1.1.3",
+        "react-native-vector-icons": "^7.1.0",
+        "react-navigation": "^4.4.3",
+        "react-navigation-drawer": "^2.6.0",
+        "react-navigation-stack": "^2.10.1",
+        "react-navigation-tabs": "^2.10.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.8.4",
+        "@babel/runtime": "^7.8.4",
+        "@react-native-community/eslint-config": "^2.0.0",
+        "babel-jest": "^26.6.3",
+        "eslint": "^7.13.0",
+        "jest": "^26.6.3",
+        "metro-react-native-babel-preset": "^0.64.0",
+        "react-test-renderer": "^17.0.1"
+    },
     .....
 ```
+
+#### Android
+
+In your `android/app/src/main/AndroidManifest.xml`
+```xml
+    .....
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    .....
+```
+
+## Code Structure:
+## Authors
+* **Phuoc Hoang Minh Nguyen** - [PhuocHoangMinhNguyen](https://github.com/PhuocHoangMinhNguyen)
+
+See also the list of [contributors](https://github.com/PhuocHoangMinhNguyen/ReamotReactNative/graphs/contributors) who participated in this project.
