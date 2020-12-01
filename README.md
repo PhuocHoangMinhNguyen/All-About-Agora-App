@@ -63,4 +63,4 @@ In your `android/app/src/main/AndroidManifest.xml`
 ## Authors
 * **Phuoc Hoang Minh Nguyen** - [PhuocHoangMinhNguyen](https://github.com/PhuocHoangMinhNguyen)
 
-See also the list of [contributors](https://github.com/PhuocHoangMinhNguyen/ReamotReactNative/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/PhuocHoangMinhNguyen/All-About-Agora-App/graphs/contributors) who participated in this project.
