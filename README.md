@@ -9,7 +9,7 @@ All About Agora (or 3A) is a mobile application designed for La Trobe students t
 3. [Features](#features)
 4. [Installation](#installation)
 5. [How to use?](#how-to-use)
-6. [Authors](#authors)
+6. [Author](#author)
 
 ## Screenshots
 
@@ -21,5 +21,5 @@ All About Agora (or 3A) is a mobile application designed for La Trobe students t
 
 ## How to use?
 
-## Authors
-* **Phuoc Hoang Minh Nguyen** - *Mobile Application Developer* - [PhuocHoangMinhNguyen](https://github.com/PhuocHoangMinhNguyen)
+## Author
+**Phuoc Hoang Minh Nguyen** - *Mobile Application Developer* - [PhuocHoangMinhNguyen](https://github.com/PhuocHoangMinhNguyen)
