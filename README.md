@@ -14,6 +14,10 @@ All About Agora (or 3A) is a mobile application designed for La Trobe students t
 ## Screenshots
 
 ## Technologies and Framework Used
+- Framework: React Native
+- Database: Firebase
+- Development Tool: Visual Studio
+- Version Control: Github
 
 ## Features
 
