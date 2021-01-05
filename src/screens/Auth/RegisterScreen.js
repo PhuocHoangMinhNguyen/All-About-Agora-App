@@ -28,9 +28,7 @@ class RegisterScreen extends React.Component {
   };
 
   // To Show or Hide Password
-  handlePassword = () => {
-    this.setState({ showPassword: !this.state.showPassword })
-  };
+  handlePassword = () => this.setState({ showPassword: !this.state.showPassword });
 
   // Check if all information is entered before create a new user.
   handleSignUp = () => {

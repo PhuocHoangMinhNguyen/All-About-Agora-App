@@ -26,7 +26,7 @@ class LoginScreen extends React.Component {
   };
 
   // Handle Show, Hide Password
-  handlePassword = () => { this.setState({ showPassword: !this.state.showPassword }) };
+  handlePassword = () => this.setState({ showPassword: !this.state.showPassword });
 
   // Handle Login using email and password.
   handleLogin = () => {

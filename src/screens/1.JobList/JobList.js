@@ -66,7 +66,16 @@ class JobList extends React.Component {
                         }
                     }
                 });
-                this.setState({ jobs: temp });
+                let params = this.props.navigation.state.params
+                if (params) {
+                    temp.forEach(t => {
+                        if (params.keywords != '' && t.jobTitle.includes(params.keywords)) {
+
+                        }
+                    });
+                } else {
+                    this.setState({ jobs: temp });
+                }
             });
     };
 
